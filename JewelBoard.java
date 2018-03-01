@@ -16,7 +16,7 @@ public class JewelBoard implements GameElement
         this.order = order;    
     }
     
-    public void knockOfLeftJewel(){
+    public void knockOffLeftJewel(){
         if(order){
             red.knockOff();
         }else{
@@ -24,7 +24,7 @@ public class JewelBoard implements GameElement
         }
     }
     
-    public void knockOfRightJewel(){
+    public void knockOffRightJewel(){
         if(order){
             blue.knockOff();
         }else{
@@ -32,6 +32,13 @@ public class JewelBoard implements GameElement
         }
     }
     
+    public void knockOffCorrectJewel(){
+        
+    }
+    
+    public void knockOffWrongJewel(){
+        
+    }
     
     public int getPointsScored(Robot r){
         int x = 0;
