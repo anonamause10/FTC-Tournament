@@ -32,12 +32,44 @@ public class JewelBoard implements GameElement
         }
     }
     
-    public void knockOffCorrectJewel(){
-        
+    public void knockOffCorrectJewel(Robot r){
+        if(r.getTeamColor()){//red bot
+            if(order){//red on left
+                this.knockOffRightJewel();
+            }else{//blue on left
+                this.knockOffLeftJewel();
+            }
+        }else{//blue bot
+            if(order){//red on left
+                this.knockOffLeftJewel();
+            }else{//blue on left
+                this.knockOffRightJewel();
+            }
+        }
     }
     
-    public void knockOffWrongJewel(){
-        
+    public void knockOffWrongJewel(Robot r){
+        if(r.getTeamColor()){//red bot
+            if(order){//red on left
+                this.knockOffLeftJewel();
+            }else{//blue on left
+                this.knockOffRightJewel();
+            }
+        }else{//blue bot
+            if(order){//red on left
+                this.knockOffRightJewel();
+            }else{//blue on left
+                this.knockOffLeftJewel();
+            }
+        }
+    }
+    
+    public void knockOff(Robot r){
+        if(r.getAutoJewel()){
+            this.knockOffCorrectJewel(r);
+        }else{
+            this.knockOffWrongJewel(r);
+        }
     }
     
     public int getPointsScored(Robot r){
@@ -53,7 +85,7 @@ public class JewelBoard implements GameElement
                 }
             }
         }
-        return 1;
+        return x;
     }
     public int getPointValue(){
         return 1;
