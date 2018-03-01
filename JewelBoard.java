@@ -11,11 +11,11 @@ public class JewelBoard implements GameElement
     private Jewel blue = new Jewel("blue");
     private boolean side;//true is red, false is blue
     private boolean order; //true is red left, false is red right
-    
+    private int point;
     public JewelBoard(boolean order){
         this.order = order;    
     }
-    
+
     public void knockOffLeftJewel(){
         if(order){
             red.knockOff();
@@ -23,7 +23,7 @@ public class JewelBoard implements GameElement
             blue.knockOff();
         }
     }
-    
+
     public void knockOffRightJewel(){
         if(order){
             blue.knockOff();
@@ -31,7 +31,7 @@ public class JewelBoard implements GameElement
             red.knockOff();
         }
     }
-    
+
     public void knockOffCorrectJewel(Robot r){
         if(r.getTeamColor()){//red bot
             if(order){//red on left
@@ -47,7 +47,7 @@ public class JewelBoard implements GameElement
             }
         }
     }
-    
+
     public void knockOffWrongJewel(Robot r){
         if(r.getTeamColor()){//red bot
             if(order){//red on left
@@ -63,7 +63,7 @@ public class JewelBoard implements GameElement
             }
         }
     }
-    
+
     public void knockOff(Robot r){
         if(r.getAutoJewel()){
             this.knockOffCorrectJewel(r);
@@ -71,11 +71,11 @@ public class JewelBoard implements GameElement
             this.knockOffWrongJewel(r);
         }
     }
-    
+
     public int getPointsScored(Robot r){
         int x = 0;
-        if(r.getAutoJewel()){
-            if(r.getTeamColor()){
+        if(r.getAutoJewel()&&r.getTime()<=30){
+            if(r.getTeamColor()){//red bot
                 if(red.isKnockedOff()&&!blue.isKnockedOff()){
                     x = 30;
                 }else if(blue.isKnockedOff()&&!red.isKnockedOff()){
@@ -83,19 +83,31 @@ public class JewelBoard implements GameElement
                 }else{
                     x = 0;
                 }
+            }else{//blue bot
+                if(!red.isKnockedOff()&&blue.isKnockedOff()){
+                    x = 30;
+                }else if(!blue.isKnockedOff()&&red.isKnockedOff()){
+                    x = -30;
+                }else{
+                    x = 0;
+                }  
             }
         }
+        point = x;
         return x;
     }
+
     public int getPointValue(){
-        return 1;
+        return point;
     }
+
     public boolean canBeScored(int time){
         if(time<=30){
             return true;
         }
         return false;
     }
+
     public String toString(){
         String str = "";
         String color = "";
@@ -105,13 +117,13 @@ public class JewelBoard implements GameElement
             color = "blue";
         }
         str += "This board is on the " + color +" side\n";
-        
+
         if(order){
             str += "The red jewel is on the left\n";
         }else{
             str += "The blue jewel is on the left\n";
         }
-        
+
         str += red.toString();
         str += blue.toString();
         return str;
