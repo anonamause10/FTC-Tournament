@@ -18,6 +18,7 @@ public class Robot
     private int avgTimePerRelic;
     private int relicVariance; //seconds
     private int balanceSR;
+    private int time;
     public Robot(){
         robotName = "";
         allianceColor = true;
@@ -36,6 +37,7 @@ public class Robot
         avgTimePerRelic = 0;
         relicVariance = 0;
         balanceSR = 0;
+        time = 0;
     }
     public Robot(String rN, boolean aC, int jSR, int cSR, int cKSR, int sZSR, int aTPG, int gV, int gSR, int gFCR,
     boolean gFRAE, int rSR, int sRSR, int tRZ, int aTPR, int rV, int bSR){
@@ -56,6 +58,7 @@ public class Robot
         avgTimePerRelic = aTPR;
         relicVariance = rV;
         balanceSR = bSR;
+        time = 0;
     }
     public boolean getTeamColor(){
         return allianceColor;
@@ -95,6 +98,12 @@ public class Robot
     }
     public boolean getBalanceSR(){
         return (balanceSR <= ((Math.random() * 100) + 1));
+    }
+    public int getTime(){
+        return time;
+    }   
+    public void timeIncrement(){
+        time++;
     }
     public String toString(){
         String str = "";
