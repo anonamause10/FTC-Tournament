@@ -1,19 +1,19 @@
 
 /**
- * Write a description of class mo here.
+ * Write a description of class reeboi here.
  *
  * @author (your name)
  * @version (a version number or a date)
  */
-public class mo
+public class reeboi
 {
     // instance variables - replace the example below with your own
     private int x;
 
     /**
-     * Constructor for objects of class mo
+     * Constructor for objects of class reeboi
      */
-    public mo()
+    public reeboi()
     {
         // initialise instance variables
         x = 0;
