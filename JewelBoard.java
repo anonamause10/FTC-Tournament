@@ -59,6 +59,13 @@ public class JewelBoard implements GameElement
     }
     public String toString(){
         String str = "";
+        String color = "";
+        if(side){
+            color = "red"'
+        }else{
+            color = "blue";
+        }
+        str += "This board is on the " + color +" side\n";
         
         if(order){
             str += "The red jewel is on the left\n";
