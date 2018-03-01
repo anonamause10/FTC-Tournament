@@ -61,7 +61,7 @@ public class JewelBoard implements GameElement
         String str = "";
         String color = "";
         if(side){
-            color = "red"'
+            color = "red";
         }else{
             color = "blue";
         }
