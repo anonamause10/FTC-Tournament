@@ -5,6 +5,7 @@ public class Relic implements GameElement{
     public Relic (){
         isStanding = false;
         scoreZone = 0;
+        side = false;
     }
     public void setStanding(boolean b){
         isStanding = b;
