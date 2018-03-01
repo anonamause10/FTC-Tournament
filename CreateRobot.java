@@ -17,6 +17,7 @@ public class CreateRobot
         s.nextInt(), s.nextInt(), s.nextInt());
         
         System.out.println(r);
+        int x = 0;
         return r;
     }
     
