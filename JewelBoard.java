@@ -46,6 +46,7 @@ public class JewelBoard implements GameElement
                 this.knockOffRightJewel();
             }
         }
+        point += 30;
     }
 
     public void knockOffWrongJewel(Robot r){
@@ -62,6 +63,7 @@ public class JewelBoard implements GameElement
                 this.knockOffLeftJewel();
             }
         }
+        point-=30;
     }
 
     public void knockOff(Robot r){
@@ -70,31 +72,6 @@ public class JewelBoard implements GameElement
         }else{
             this.knockOffWrongJewel(r);
         }
-    }
-
-    public int getPointsScored(Robot r){
-        int x = 0;
-        if(r.getAutoJewel()&&r.getTime()<=30){
-            if(r.getTeamColor()){//red bot
-                if(red.isKnockedOff()&&!blue.isKnockedOff()){
-                    x = 30;
-                }else if(blue.isKnockedOff()&&!red.isKnockedOff()){
-                    x = -30;
-                }else{
-                    x = 0;
-                }
-            }else{//blue bot
-                if(!red.isKnockedOff()&&blue.isKnockedOff()){
-                    x = 30;
-                }else if(!blue.isKnockedOff()&&red.isKnockedOff()){
-                    x = -30;
-                }else{
-                    x = 0;
-                }  
-            }
-        }
-        point = x;
-        return x;
     }
 
     public int getPointValue(){
