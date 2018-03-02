@@ -60,6 +60,9 @@ public class Robot
         balanceSR = bSR;
         time = 0;
     }
+    public void setTeamColor(boolean c){
+        allianceColor = c;
+    }
     public boolean getTeamColor(){
         return allianceColor;
     }
