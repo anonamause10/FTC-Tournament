@@ -54,13 +54,13 @@ public class Team{
         (outreachLevel * 3) + (designLevel * 3) + (engineeringNotebookLevel * 2);
     }
     public double getDesignScore(){
-        return designLevel;
+        return designLevel + this.getJudgeScore() * 0.2;
     }
     public double getThinkScore(){
-        return engineeringNotebookLevel;
+        return engineeringNotebookLevel + this.getJudgeScore() * 0.2;
     }
     public double getConnectScore(){
-        return outreachLevel;
+        return outreachLevel + this.getJudgeScore() * 0.2;
     }
     public double getJudgeScore(){
         return (presentationLevel*2) + pitLevel;
