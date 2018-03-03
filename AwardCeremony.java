@@ -91,6 +91,6 @@ public class AwardCeremony{
         str+= "Inspire Award 1st winner is:\n";
         str+= inspire1Win.toString()+"\n";
         
-        return "";
+        return str;
     }
 }
