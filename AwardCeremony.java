@@ -15,6 +15,9 @@ public class AwardCeremony{
         inspire3Win = new Team();
         connectWin = new Team();
         designWin = new Team();
+        innovateWin = new Team();
+        motivateWin = new Team();
+        controlWin = new Team();
     }
     public AwardCeremony(Team[] t){
         thinkWin = getThink(t);
@@ -23,6 +26,9 @@ public class AwardCeremony{
         inspire3Win = getInspire(t)[2];
         connectWin = getConnect(t);
         designWin = getDesign(t);
+        innovateWin = getInnovate(t);
+        motivateWin = getMotivate(t);
+        controlWin = getControl(t);
     }
     public static Team getThink(Team[] t){
         int index = 0;

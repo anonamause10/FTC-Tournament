@@ -1,6 +1,6 @@
-Kirby 
-true 100 90 90 90 5 0 100 100 true 100 30 3 12 5 95 
-Rice Cooker 
-false 95 100 90 90 5 0 100 100 true 100 30 3 12 5 95 
-boi 
-false 100 90 90 90 5 0 100 100 true 100 30 3 12 5 95 
+Aperture Science
+5064 10 9 9 9 5 7 10 8 8 7 false 
+R.I.C.E.
+6199 10 9 9 9 5 7 10 8 8 7 true 
+Bronco Bots
+6200 10 9 9 9 5 7 10 8 8 7 false 

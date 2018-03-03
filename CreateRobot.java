@@ -8,7 +8,7 @@ import java.io.*;
  */
 public class CreateRobot
 {
-    public static Robot CreateRobot(String[]args) throws IOException{
+    public static Robot createRobot(String[]args) throws IOException{
         Scanner s = new Scanner(new File("Robot.txt"));
 
         Robot r = new Robot(s.next(), s.nextBoolean(), s.nextInt(), s.nextInt(), 
@@ -21,7 +21,7 @@ public class CreateRobot
         return r;
     }
 
-    public static List<Robot> CreateBots()throws IOException{
+    public static List<Robot> createBots()throws IOException{
         List<Robot>bots = new ArrayList<Robot>();
         Scanner s = new Scanner(new File("Robot.txt"));
         Robot temp;

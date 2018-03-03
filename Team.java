@@ -36,7 +36,8 @@ public class Team{
         ranking = 0;
     }
     public Team(Robot r, String tN, int teamN, double dL, double pL, double pitL, 
-    double gPL, double oL, double eNL, int iL, int mL, int cL, double rS, boolean iR){
+    double gPL, double oL, double eNL, double iL, double mL, double cL, double rS, 
+    boolean iR){
         robot = r;
         teamName =  tN;
         teamNumber = teamN;
@@ -71,7 +72,7 @@ public class Team{
     public double getConnectScore(){
         return outreachLevel + this.getJudgeScore() * 0.2;
     }
-    public double get innovateScore(){
+    public double getInnovateScore(){
         return innovateLevel + this.getJudgeScore() * 0.2;   
     }
     public double getMotivateScore(){
