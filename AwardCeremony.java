@@ -5,6 +5,9 @@ public class AwardCeremony{
     private Team inspire3Win;
     private Team connectWin;
     private Team designWin;
+    private Team innovateWin;
+    private Team motivateWin;
+    private Team controlWin;
     public AwardCeremony(){
         thinkWin = new Team();
         inspire1Win = new Team();
@@ -76,6 +79,39 @@ public class AwardCeremony{
         }
         return t[index];
     }
+    public static Team getInnovate(Team[] t){
+        int index = 0;
+        double score = 0;
+        for (int i = 0; i < t.length; i++){
+            if(t[i].getInnovateScore() > score){
+                index = i;
+                score = t[i].getThinkScore();
+            }
+        }
+        return t[index];
+    }
+    public static Team getMotivate(Team[] t){
+        int index = 0;
+        double score = 0;
+        for (int i = 0; i < t.length; i++){
+            if(t[i].getMotivateScore() > score){
+                index = i;
+                score = t[i].getThinkScore();
+            }
+        }
+        return t[index];
+    }
+    public static Team getControl(Team[] t){
+        int index = 0;
+        double score = 0;
+        for (int i = 0; i < t.length; i++){
+            if(t[i].getControlScore() > score){
+                index = i;
+                score = t[i].getThinkScore();
+            }
+        }
+        return t[index];
+    }
     public String toString(){
         String str = "";
         str+= "Connect Award winner is:\n";
@@ -84,6 +120,12 @@ public class AwardCeremony{
         str+= designWin.toString()+"\n";
         str+= "Think Award winner is:\n";
         str+= thinkWin.toString()+"\n";
+        str+= "Inovate Award winner is:\n";
+        str+= innovateWin.toString() +"\n";
+        str+= "Motivate Award winner is:\n";
+        str+= motivateWin.toString() +"\n";
+        str+= "Control Award winner is: \n";
+        str+= controlWin.toString() +"\n";
         str+= "Inspire Award 3rd winner is:\n";
         str+= inspire3Win.toString()+"\n";
         str+= "Inspire Award 2nd winner is:\n";
