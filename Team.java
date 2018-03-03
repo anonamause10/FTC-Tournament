@@ -8,6 +8,9 @@ public class Team{
     private double graciousProfessionalismLevel;
     private double outreachLevel;
     private double engineeringNotebookLevel;
+    private double innovateLevel;
+    private double motivateLevel;
+    private double controlLevel;
     private double relationsSkill;
     private boolean isRookie;
     private int qP;
@@ -23,6 +26,9 @@ public class Team{
         graciousProfessionalismLevel = 0;
         outreachLevel = 0;
         engineeringNotebookLevel = 0;
+        innovateLevel = 0;
+        motivateLevel = 0;
+        controlLevel = 0;
         relationsSkill = 0;
         isRookie = false;
         qP = 0;
@@ -30,7 +36,7 @@ public class Team{
         ranking = 0;
     }
     public Team(Robot r, String tN, int teamN, double dL, double pL, double pitL, 
-    double gPL, double oL, double eNL, double rS, boolean iR){
+    double gPL, double oL, double eNL, int iL, int mL, int cL, double rS, boolean iR){
         robot = r;
         teamName =  tN;
         teamNumber = teamN;
@@ -40,6 +46,9 @@ public class Team{
         graciousProfessionalismLevel = gPL;
         outreachLevel = oL;
         engineeringNotebookLevel = eNL;
+        innovateLevel = iL;
+        motivateLevel = mL;
+        controlLevel = cL;
         relationsSkill = rS;
         isRookie = iR;
         qP = 0;
@@ -61,6 +70,15 @@ public class Team{
     }
     public double getConnectScore(){
         return outreachLevel + this.getJudgeScore() * 0.2;
+    }
+    public double get innovateScore(){
+        return innovateLevel + this.getJudgeScore() * 0.2;   
+    }
+    public double getMotivateScore(){
+        return motivateLevel + this.getJudgeScore() * 0.2;
+    }
+    public double getControlScore(){
+        return controlLevel + this.getJudgeScore() * 0.2;
     }
     public double getJudgeScore(){
         return (presentationLevel*2) + pitLevel;
