@@ -28,6 +28,10 @@ public class Glyph implements GameElement
         return 2;
     }
     
+    public boolean getColor(){
+      return color; 
+    }
+    
     public boolean canBeScored(int time){
         return true;
     }
