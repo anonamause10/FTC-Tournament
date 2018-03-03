@@ -39,7 +39,7 @@ public class AwardCeremony{
         while(!sorted){
             boolean c = true;
             for(int i = 0; i<t.length-1; i++){
-                if(temp[i].getInspireScore()>temp[i+1].getInspireScore()){
+                if(temp[i].getInspireScore()<temp[i+1].getInspireScore()){
                     Team x = temp[i];
                     temp[i] = temp[i+1];
                     temp[i+1] = x;
