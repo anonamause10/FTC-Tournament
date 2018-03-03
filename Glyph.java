@@ -9,7 +9,7 @@ public class Glyph implements GameElement
 {
    
     private boolean scored;
-    private boolean color; //true is white, false is brown
+    private int color; //1 is white, 0 is brown
     /**
      * Constructor for objects of class Glyph
      */
@@ -28,7 +28,7 @@ public class Glyph implements GameElement
         return 2;
     }
     
-    public boolean getColor(){
+    public int getColor(){
       return color; 
     }
     
@@ -39,7 +39,7 @@ public class Glyph implements GameElement
     public String toString(){
         String str = "";
         String col;
-        if(color){
+        if(color == 1){
             col = "white";
         }else{
             col = "brown";
