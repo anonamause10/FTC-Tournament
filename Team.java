@@ -83,6 +83,14 @@ public class Team{
     public void setRP(int n){
         rP = n;
     }
+    public String toString(){
+        String str = "Team ";
+        str += teamNumber;
+        str+= ": " + teamName;
+        
+        
+        return str;
+    }
 }
 
 

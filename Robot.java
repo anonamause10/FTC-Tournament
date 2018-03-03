@@ -8,7 +8,7 @@ public class Robot
     private int cryptoKeySR;
     private int safeZoneSR;
     private int avgTimePerGlyph;
-    private int glyphVariance;
+    private int glyphVariance; //seconds
     private int glyphSR;
     private int goForCipherRate;
     private boolean goForRelicAtEndgame;
