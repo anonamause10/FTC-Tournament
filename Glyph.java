@@ -10,10 +10,10 @@ public class Glyph implements GameElement
    
     private boolean scored;
     private int color; //1 is white, 0 is brown
-    /**
-     * Constructor for objects of class Glyph
-     */
-    public Glyph(int color/**1 is white*/)
+
+
+    public Glyph(int color/**true is white*/)
+
     {
         // initialise instance variables
         scored = false;
