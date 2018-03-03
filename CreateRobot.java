@@ -21,17 +21,17 @@ public class CreateRobot
         return r;
     }
 
-    public static List<Robot> CreateBots(String[]args)throws IOException{
+    public static List<Robot> CreateBots()throws IOException{
         List<Robot>bots = new ArrayList<Robot>();
         Scanner s = new Scanner(new File("Robot.txt"));
         Robot temp;
-        while(s.hasNext()){
-            temp = new Robot(s.next(), 
-            s.nextBoolean(), s.nextInt(), s.nextInt(), 
+        while(s.hasNextLine()){
+            temp = new Robot(s.nextLine(), s.nextBoolean(), s.nextInt(), s.nextInt(), 
                 s.nextInt(), s.nextInt(), s.nextInt(), s.nextInt(), s.nextInt(), 
                 s.nextInt(), s.nextBoolean(), s.nextInt(), s.nextInt(), s.nextInt(), 
                 s.nextInt(), s.nextInt(), s.nextInt());
             bots.add(temp);
+            s.nextLine();
         }
         return bots;
     }
