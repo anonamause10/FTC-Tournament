@@ -1,6 +1,6 @@
-Aperture Science
-5064 10 9 9 9 5 7 10 8 8 7 false 
 R.I.C.E.
 6199 10 9 9 9 5 7 10 8 8 7 true 
 Bronco Bots
 6200 10 9 9 9 5 7 10 8 8 7 false 
+N.Y.A.N. Robotics
+10091 9.5 9 10 9 9 9 9 9 8 8 false

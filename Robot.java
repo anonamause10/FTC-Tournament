@@ -43,10 +43,12 @@ public class Robot
     boolean gFRAE, int rSR, int sRSR, int tRZ, int aTPR, int rV, int bSR){
         robotName = rN;
         allianceColor = aC;
+        //auto
         jewelSR = jSR;
         cryptoboxSR = cSR;
         cryptoKeySR = cKSR;
         safeZoneSR = sZSR;
+        //tele
         avgTimePerGlyph = aTPG;
         glyphVariance = gV;
         glyphSR = gSR;
