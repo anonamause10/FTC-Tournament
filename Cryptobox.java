@@ -13,12 +13,14 @@ public class Cryptobox
     boolean  color;//true is red, false is blue
     boolean robotInZone;
     boolean isFull;
-    private final Glyph[4][3] cipher1 new Glyph{{1, 0, 1},{0, 1, 0}, {1, 0, 1}, {0, 1, 0}};
-    private final Glyph[4][3] cipher2 new Glyph{{0, 1, 0}, {1, 0, 1}, {0, 1, 0}, {1, 0, 1}};
-    private final Glyph[4][3] cipher3 new Glyph{{0, 1, 0}, {1, 0, 1}, {1, 0, 1}, {0, 1, 0}};
-    private final Glyph[4][3] cipher4 new Glyph{{1, 0, 1}, {0, 1, 0}, {0, 1, 0}, {1, 0, 1}};
-    private final Glyph[4][3] cipher5 new Glyph{{0, 1, 1}, {0, 0, 1}, {1, 0, 0}, {1, 1, 0}};
-    private final Glyph[4][3] cipher6 new Glyph{{1, 0, 0}, {1, 1, 0}, {0. 1, 1}, {0, 0, 1}};
+    Glyph w = new Glyph(1);
+    Glyph b = new Glyph(0);
+    private final Glyph[4][3] cipher1 = new Glyph{{w, b, w},{b, w, b}, {w, b, w}, {b, w, b}};
+    private final Glyph[4][3] cipher2 = new Glyph{{b, w, b}, {w, b, w}, {b, w, b}, {w, b, w}};
+    private final Glyph[4][3] cipher3 = new Glyph{{b, w, b}, {w, b, w}, {w, b, w}, {b, w, b}};
+    private final Glyph[4][3] cipher4 = new Glyph{{w, b, w}, {b, w, b}, {b, w, b}, {w, b, w}};
+    private final Glyph[4][3] cipher5 = new Glyph{{b, w, w}, {b, b, w}, {w, b, b}, {w, w, b}};
+    private final Glyph[4][3] cipher6 = new Glyph{{w, b, b}, {w, w, b}, {b. w, w}, {b, b, w}};
     public Cryptobox(boolean color){
         this.color = color;
         box = new Glyph[4][3];
