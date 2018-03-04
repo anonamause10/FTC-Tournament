@@ -33,12 +33,15 @@ public class Cryptobox
     public void scoreGlyph(Glyph g, int col){
         if(col == 1){
             box[rowCount1][0] =  g;
+            rowCount1--;
         }
         if(col == 2){
             box[rowCount2][1] =  g;
+            rowCount2--;
         }
         if(col == 3){
             box[rowCount3][2] =  g;
+            rowCount3--;
         }
     }
     public int checkRows(){
