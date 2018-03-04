@@ -7,7 +7,7 @@
  */
 public interface GameElement
 {
-    int getPointValue();
+    int getPointValue(int time);
     boolean canBeScored(int time);
     String toString();
 }

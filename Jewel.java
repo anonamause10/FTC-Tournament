@@ -14,7 +14,7 @@ public class Jewel implements GameElement
         this.color = color;
         knockedOff = false;
     }
-    public int getPointValue(){
+    public int getPointValue(int time){
        return pointValue; 
     }
     public boolean canBeScored(int time){

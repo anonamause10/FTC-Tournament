@@ -74,8 +74,11 @@ public class JewelBoard implements GameElement
         }
     }
 
-    public int getPointValue(){
-        return point;
+    public int getPointValue(int time){
+        if(time<=30){
+            return point;
+        }
+        return 0;
     }
 
     public boolean canBeScored(int time){

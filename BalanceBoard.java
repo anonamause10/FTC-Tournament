@@ -10,10 +10,10 @@ public class BalanceBoard implements GameElement
     private boolean hasRobot;
     private boolean side;//true is red
     public boolean canBeScored(int time){
-        return time<= 30||time>= 120;
+        return time>= 120;
     }
     
-    public int getPointValue(){
+    public int getPointValue(int time){
         return 20;
     }
     

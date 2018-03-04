@@ -24,12 +24,14 @@ public class Cryptobox
     private final Glyph[][] cipher4 = new Glyph[][]{{w, b, w}, {b, w, b}, {b, w, b}, {w, b, w}};
     private final Glyph[][] cipher5 = new Glyph[][]{{b, w, w}, {b, b, w}, {w, b, b}, {w, w, b}};
     private final Glyph[][] cipher6 = new Glyph[][]{{w, b, b}, {w, w, b}, {b, w, w}, {b, b, w}};
+    
     public Cryptobox(boolean color){
         this.color = color;
         box = new Glyph[4][3];
         robotInZone = false;
         isFull = false;
     }
+
     public void scoreGlyph(Glyph g, int col){
         if(col == 1){
             box[rowCount1][0] =  g;
@@ -44,6 +46,7 @@ public class Cryptobox
             rowCount3--;
         }
     }
+
     public int checkRows(){
         int counter = 0;
         for(int i = 0; i < 4; i++){
@@ -53,6 +56,7 @@ public class Cryptobox
         }
         return counter;
     }
+
     public int checkColumns(){
         int counter = 0;
         for(int i = 0; i < 3; i++){
@@ -62,14 +66,124 @@ public class Cryptobox
         }
         return counter;
     }
+
     public boolean checkCipher(){
+        isFull = this.checkColumns()==3&&this.checkRows()==4;
         if (!isFull){
             return false;
         }
-        if(Arrays.deepEquals(box, cipher1) || Arrays.deepEquals(box, cipher2) || Arrays.deepEquals(box, cipher3) ||
-        Arrays.deepEquals(box, cipher4) || Arrays.deepEquals(box, cipher5) || Arrays.deepEquals(box, cipher6)){
-            return true;
-        }
-        return false;
+        return checkCipher1()||checkCipher2()||checkCipher3()||checkCipher4()||
+        checkCipher5()||checkCipher6();
+
     }
+
+    public String whichCiph(){
+        if(!isFull){
+            return "Not full";
+        }
+
+        if(checkCipher1()||checkCipher2()){
+            return "Frog Cipher";
+        }
+
+        if(checkCipher3()||checkCipher4()){
+            return "Bird Cipher";
+        }
+
+        if(checkCipher5()||checkCipher6()){
+            return "Snake Cipher";
+        }
+
+        return "No Cipher";
+    }
+
+    public String printCiph(){
+        String str = "";
+        for(int i = 0; i < 4; i++){
+            for(int j = 0; j < 3; j++){
+                if(box[i][j]==null){
+                    str += -1;
+                }else{
+                    str += box[i][j].toStr();
+                }
+            }
+            str+="\n";
+        }
+
+        return str;
+    }
+
+
+    private boolean checkCipher1(){
+        for(int i = 0; i < box.length; i++){
+            for(int j = 0; j < box[i].length; j++){
+                if(!box[i][j].equals(cipher1[i][j])){
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
+    private boolean checkCipher2(){
+        for(int i = 0; i < box.length; i++){
+            for(int j = 0; j < box[i].length; j++){
+                if(!box[i][j].equals(cipher2[i][j])){
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
+    private boolean checkCipher3(){
+        for(int i = 0; i < box.length; i++){
+            for(int j = 0; j < box[i].length; j++){
+                if(!box[i][j].equals(cipher3[i][j])){
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
+    private boolean checkCipher4(){
+        for(int i = 0; i < box.length; i++){
+            for(int j = 0; j < box[i].length; j++){
+                if(!box[i][j].equals(cipher4[i][j])){
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
+    private boolean checkCipher5(){
+        for(int i = 0; i < box.length; i++){
+            for(int j = 0; j < box[i].length; j++){
+                if(!box[i][j].equals(cipher5[i][j])){
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
+    private boolean checkCipher6(){
+        for(int i = 0; i < box.length; i++){
+            for(int j = 0; j < box[i].length; j++){
+                if(!box[i][j].equals(cipher6[i][j])){
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
 }

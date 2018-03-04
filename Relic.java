@@ -2,47 +2,58 @@ public class Relic implements GameElement{
     private boolean isStanding;
     private boolean side; //true is red
     private int scoreZone;
+    private Cryptobox box;
     public Relic (){
         isStanding = false;
         scoreZone = 0;
         side = false;
+        box = new Cryptobox(false);
     }
+
     public void setStanding(boolean b){
         isStanding = b;
     }
+
     public void setZone(int s){
         scoreZone = s;
     }
+
     public void setSide(boolean b){
         side = b;
+        box = new Cryptobox(b);
     }
+
     public boolean canBeScored(int time){
         if(time >= 120){
             return true;
         }
         return false;
     }
-    public int getPointValue(){
-        if (scoreZone == 1){
-            if(isStanding){
-                return 25;
+
+    public int getPointValue(int time){
+        if(time>=120||box.checkCipher()){
+            if (scoreZone == 1){
+                if(isStanding){
+                    return 25;
+                }
+                return 10;
             }
-            return 10;
-        }
-        if (scoreZone == 2){
-            if(isStanding){
-                return 35;
+            if (scoreZone == 2){
+                if(isStanding){
+                    return 35;
+                }
+                return 20;
             }
-            return 20;
-        }
-        if (scoreZone == 3){
-            if(isStanding){
-                return 55;
+            if (scoreZone == 3){
+                if(isStanding){
+                    return 55;
+                }
+                return 40;
             }
-            return 40;
         }
         return 0;
     }
+
     public String toString(){
         String s = "This relic is on the ";
         if(side == true)

@@ -24,7 +24,11 @@ public class Glyph implements GameElement
         scored = !scored;
     }
     
-    public int getPointValue(){
+    public int getPointValue(int time){
+        int x = 0;
+        if(time<= 30){
+            return 15;
+        }
         return 2;
     }
     
@@ -49,6 +53,16 @@ public class Glyph implements GameElement
             str += "not ";
         }
         str +="scored\n";
+        return str;
+    }
+    
+    public boolean equals(Glyph g){
+        return color == g.getColor();
+    }
+    
+    public String toStr(){
+        String str = " ";
+        str+=color;
         return str;
     }
 }
