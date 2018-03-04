@@ -10,11 +10,14 @@ public class Cryptobox
 {
     // instance variables - replace the example below with your own
     Glyph[][] box;//0 is top, left
-    boolean  color;//true is red, false is blue
-    boolean robotInZone;
-    boolean isFull;
-    Glyph w = new Glyph(1);
-    Glyph b = new Glyph(0);
+    private boolean  color;//true is red, false is blue
+    private boolean robotInZone;
+    private boolean isFull;
+    private Glyph w = new Glyph(1);
+    private Glyph b = new Glyph(0);
+    private int rowCount1 = 3;
+    private int rowCount2 = 3;
+    private int rowCount3 = 3;
     private final Glyph[][] cipher1 = new Glyph[][]{{w, b, w}, {b, w, b}, {w, b, w}, {b, w, b}};
     private final Glyph[][] cipher2 = new Glyph[][]{{b, w, b}, {w, b, w}, {b, w, b}, {w, b, w}};
     private final Glyph[][] cipher3 = new Glyph[][]{{b, w, b}, {w, b, w}, {w, b, w}, {b, w, b}};
@@ -29,7 +32,15 @@ public class Cryptobox
     }
     
     public void scoreGlyph(Glyph g, int col){
-
+        if(col == 1){
+            box[rowCount1][0] =  g;
+        }
+        if(col == 2){
+            box[rowCount2][1] =  g;
+        }
+        if(col == 3){
+            box[rowCount3][2] =  g;
+        }
     }
     
     public int checkRows(){
@@ -37,11 +48,11 @@ public class Cryptobox
     }
     public boolean checkCipher(){
         if (!isFull){
-        return false;
+            return false;
         }
         if(Arrays.deepEquals(box, cipher1) || Arrays.deepEquals(box, cipher2) || Arrays.deepEquals(box, cipher3) ||
         Arrays.deepEquals(box, cipher4) || Arrays.deepEquals(box, cipher5) || Arrays.deepEquals(box, cipher6)){
-         return true;   
+            return true;   
         }
         return false;
     }
