@@ -15,12 +15,12 @@ public class Cryptobox
     boolean isFull;
     Glyph w = new Glyph(1);
     Glyph b = new Glyph(0);
-    private final Glyph[4][3] cipher1 = new Glyph{{w, b, w},{b, w, b}, {w, b, w}, {b, w, b}};
-    private final Glyph[4][3] cipher2 = new Glyph{{b, w, b}, {w, b, w}, {b, w, b}, {w, b, w}};
-    private final Glyph[4][3] cipher3 = new Glyph{{b, w, b}, {w, b, w}, {w, b, w}, {b, w, b}};
-    private final Glyph[4][3] cipher4 = new Glyph{{w, b, w}, {b, w, b}, {b, w, b}, {w, b, w}};
-    private final Glyph[4][3] cipher5 = new Glyph{{b, w, w}, {b, b, w}, {w, b, b}, {w, w, b}};
-    private final Glyph[4][3] cipher6 = new Glyph{{w, b, b}, {w, w, b}, {b. w, w}, {b, b, w}};
+    private final Glyph[][] cipher1 = new Glyph[][]{{w, b, w},{b, w, b}, {w, b, w}, {b, w, b}};
+    private final Glyph[][] cipher2 = new Glyph[][]{{b, w, b}, {w, b, w}, {b, w, b}, {w, b, w}};
+    private final Glyph[][] cipher3 = new Glyph[][]{{b, w, b}, {w, b, w}, {w, b, w}, {b, w, b}};
+    private final Glyph[][] cipher4 = new Glyph[][]{{w, b, w}, {b, w, b}, {b, w, b}, {w, b, w}};
+    private final Glyph[][] cipher5 = new Glyph[][]{{b, w, w}, {b, b, w}, {w, b, b}, {w, w, b}};
+    private final Glyph[][] cipher6 = new Glyph[][]{{w, b, b}, {w, w, b}, {b, w, w}, {b, b, w}};
     public Cryptobox(boolean color){
         this.color = color;
         box = new Glyph[4][3];
@@ -39,9 +39,9 @@ public class Cryptobox
         if (!isFull){
         return false;
         }
-        if(Arrays.deepEquals(box, cipher1) || (Arrays.deepEquals(box, cipher2) || (Arrays.deepEquals(box, cipher3) ||
-        (Arrays.deepEquals(box, cipher4) || (Arrays.deepEquals(box, cipher5) || (Arrays.deepEquals(box, cipher6)){
-         return true   
+        if(Arrays.deepEquals(box, cipher1) || Arrays.deepEquals(box, cipher2) || Arrays.deepEquals(box, cipher3) ||
+        Arrays.deepEquals(box, cipher4) || Arrays.deepEquals(box, cipher5) || Arrays.deepEquals(box, cipher6)){
+         return true;   
         }
         return false;
     }
