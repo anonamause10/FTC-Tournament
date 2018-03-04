@@ -15,7 +15,7 @@ public class Cryptobox
     boolean isFull;
     Glyph w = new Glyph(1);
     Glyph b = new Glyph(0);
-    private final Glyph[][] cipher1 = new Glyph[][]{{w, b, w},{b, w, b}, {w, b, w}, {b, w, b}};
+    private final Glyph[][] cipher1 = new Glyph[][]{{w, b, w}, {b, w, b}, {w, b, w}, {b, w, b}};
     private final Glyph[][] cipher2 = new Glyph[][]{{b, w, b}, {w, b, w}, {b, w, b}, {w, b, w}};
     private final Glyph[][] cipher3 = new Glyph[][]{{b, w, b}, {w, b, w}, {w, b, w}, {b, w, b}};
     private final Glyph[][] cipher4 = new Glyph[][]{{w, b, w}, {b, w, b}, {b, w, b}, {w, b, w}};
