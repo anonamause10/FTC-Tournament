@@ -30,7 +30,6 @@ public class Cryptobox
         robotInZone = false;
         isFull = false;
     }
-    
     public void scoreGlyph(Glyph g, int col){
         if(col == 1){
             box[rowCount1][0] =  g;
@@ -42,9 +41,23 @@ public class Cryptobox
             box[rowCount3][2] =  g;
         }
     }
-    
     public int checkRows(){
-        return 0;
+        int counter = 0;
+        for(int i = 0; i < 4; i++){
+            if(box[i][0] != null && box[i][1] != null && box[i][2] != null){
+                counter++;
+            }
+        }
+        return counter;
+    }
+    public int checkColumns(){
+        int counter = 0;
+        for(int i = 0; i < 3; i++){
+            if(box[0][i] != null && box[1][i] != null && box[2][i] != null && box[3][i] != null){
+                counter++;
+            }
+        }
+        return counter;
     }
     public boolean checkCipher(){
         if (!isFull){
@@ -52,7 +65,7 @@ public class Cryptobox
         }
         if(Arrays.deepEquals(box, cipher1) || Arrays.deepEquals(box, cipher2) || Arrays.deepEquals(box, cipher3) ||
         Arrays.deepEquals(box, cipher4) || Arrays.deepEquals(box, cipher5) || Arrays.deepEquals(box, cipher6)){
-            return true;   
+            return true;
         }
         return false;
     }
