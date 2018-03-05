@@ -18,6 +18,8 @@ public class Cryptobox
     private int rowCount1 = 3;
     private int rowCount2 = 3;
     private int rowCount3 = 3;
+    private int autoScore = 0;
+    private int teleScore = 0;
     private final Glyph[][] cipher1 = new Glyph[][]{{w, b, w}, {b, w, b}, {w, b, w}, {b, w, b}};
     private final Glyph[][] cipher2 = new Glyph[][]{{b, w, b}, {w, b, w}, {b, w, b}, {w, b, w}};
     private final Glyph[][] cipher3 = new Glyph[][]{{b, w, b}, {w, b, w}, {w, b, w}, {b, w, b}};
@@ -30,6 +32,33 @@ public class Cryptobox
         box = new Glyph[4][3];
         robotInZone = false;
         isFull = false;
+    }
+    
+    public int getAutoPoints(Robot r, int n){//1 is left 3 is right
+        int score = 0;
+        if(r.getAutoCrypto()){
+            score += 15;
+        }
+        if(r.getAutoKey()){
+            score += 30;
+        }
+        return 0;
+    }
+    
+    public int getTelePoints(){
+        int glyphs = 0;
+        for(int r = 0; r < 4; r++){
+            for(int c = 0; c < 3; c++){
+                if(box[r][c] != null){
+                    glyphs++;
+                }
+            }
+        }
+        int score = (glyphs * 2) + (this.checkColumns() * 15) + (this.checkRows() * 10);
+        if(this.checkCipher()){
+            score += 30;
+        }
+        return score;
     }
 
     public void scoreGlyph(Glyph g, int col){
