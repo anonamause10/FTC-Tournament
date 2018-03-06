@@ -72,13 +72,13 @@ public class Robot
         return allianceColor;
     }
     public boolean getAutoJewel(){
-        return (jewelSR <= ((Math.random() * 100) + 1));
+        return (jewelSR >= ((Math.random() * 100) + 1));
     }
     public boolean getAutoCrypto(){
-        return (cryptoboxSR <= ((Math.random() * 100) + 1));
+        return (cryptoboxSR >= ((Math.random() * 100) + 1));
     }
     public boolean getAutoKey(){
-        return (cryptoKeySR <= ((Math.random() * 100) + 1));
+        return (cryptoKeySR >= ((Math.random() * 100) + 1));
     }
     public int numAutoGlyphs(){
         return (30/(avgTimePerGlyph*3));
@@ -87,22 +87,22 @@ public class Robot
         return cryptoboxSR>=90&&cryptoKeySR>=90;
     }
     public boolean getSafeZone(){
-        return (safeZoneSR <= ((Math.random() * 100) + 1));
+        return (safeZoneSR >= ((Math.random() * 100) + 1));
     }
     public int getAvgTimePerGlyph(){
         return avgTimePerGlyph;
     }
     public boolean getGlyphRate(){
-        return (glyphSR <= ((Math.random() * 100) + 1));
+        return (glyphSR >= ((Math.random() * 100) + 1));
     }
     public boolean getGoForCipher(){
         return goForRelicAtEndgame;
     }
     public boolean getRelic(){
-        return (relicSR <= ((Math.random() * 100) + 1));
+        return (relicSR >= ((Math.random() * 100) + 1));
     }
     public boolean getStandingRelic(){
-        return (standingRelicSR <= ((Math.random() *100) + 1));
+        return (standingRelicSR >= ((Math.random() *100) + 1));
     }
     public int getTargetRelicZone(){
         return targetRelicZone;
@@ -111,7 +111,7 @@ public class Robot
         return avgTimePerRelic;
     }
     public boolean getBalanceSR(){
-        return (balanceSR <= ((Math.random() * 100) + 1));
+        return (balanceSR >= ((Math.random() * 100) + 1));
     }
     public int getTime(){
         return time;
