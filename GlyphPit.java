@@ -13,7 +13,8 @@ public class GlyphPit
     public GlyphPit(){
         Glyph w = new Glyph(1);
         Glyph b = new Glyph(0);
-        
+        whites = new ArrayList<Glyph>();
+        browns = new ArrayList<Glyph>();
         for(int i = 0; i<24; i++){
             whites.add(w);
             

@@ -47,6 +47,7 @@ public class Cryptobox
         if(r.getAutoGlyphs()){
             for(int i = 0; i<r.numAutoGlyphs()-1; i++){
                 score+=15;
+                scoreGlyph(pit.getRandGlyph(),n);
                 if(!canScore(n)){
                     n++;
                 }
@@ -55,7 +56,8 @@ public class Cryptobox
                 }
             }
         }
-        return 0;
+        autoScore = score;
+        return score;
     }
 
     public int getTelePoints(){
@@ -67,7 +69,7 @@ public class Cryptobox
                 }
             }
         }
-        int score = (glyphs * 2) + (this.checkColumns() * 15) + (this.checkRows() * 10);
+        int score = (glyphs * 2) + (this.checkColumns() * 20) + (this.checkRows() * 10);
         if(this.checkCipher()){
             score += 30;
         }
