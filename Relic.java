@@ -3,10 +3,10 @@ public class Relic implements GameElement{
     private boolean side; //true is red
     private int scoreZone;
     private Cryptobox box;
-    public Relic (){
+    public Relic (boolean side){
         isStanding = false;
         scoreZone = 0;
-        side = false;
+        this.side = side;
         box = new Cryptobox(false);
     }
 

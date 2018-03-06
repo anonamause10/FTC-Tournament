@@ -119,6 +119,10 @@ public class Team{
         rP = n;
     }
 
+    public Robot getRobot(){
+        return robot;
+    }
+    
     public String toString(){
         String str = "Team ";
         str += teamNumber;

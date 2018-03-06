@@ -29,10 +29,30 @@ public class Field
     public Robot bRBot;
     public Robot rOBot;
     public Robot bOBot;
-    public Team rRTeam;
-    public Team bRTeam;
-    public Team rOTeam;
-    public Team bOTeam;
+    
+    public Field(Robot rR, Robot bR, Robot rO, Robot bO){
+        pit = new GlyphPit();
+        rRCrypto = new Cryptobox(true);
+        bRCrypto = new Cryptobox(false);
+        bOCrypto = new Cryptobox(false);
+        rOCrypto = new Cryptobox(true);
+        rRJewelBoard = new JewelBoard(true); 
+        bRJewelBoard = new JewelBoard(false); 
+        rOJewelBoard = new JewelBoard(true); 
+        bOJewelBoard = new JewelBoard(false);
+        rRRelic = new Relic(true);
+        bRRelic = new Relic(false);
+        rORelic = new Relic(true);
+        bORelic = new Relic(false);
+        rRBoard = new BalanceBoard(true);
+        bRBoard = new BalanceBoard(false);
+        rOBoard = new BalanceBoard(true);
+        bOBoard = new BalanceBoard(false);
+        rRBot = rR;
+        bRBot = bR;
+        rOBot = rO;
+        bOBot = bO;
+    }
     
     
 }

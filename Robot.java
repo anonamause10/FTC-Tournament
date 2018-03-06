@@ -2,6 +2,7 @@
 public class Robot
 {
     private String robotName;
+    private int robotNum;
     private boolean allianceColor;//true = red, false = blue;
     private int jewelSR;
     private int cryptoboxSR;
@@ -21,6 +22,7 @@ public class Robot
     private int time;
     public Robot(){
         robotName = "";
+        robotNum = 1111;
         allianceColor = true;
         jewelSR = 0;
         cryptoboxSR = 0;
@@ -39,10 +41,11 @@ public class Robot
         balanceSR = 0;
         time = 0;
     }
-    public Robot(String rN, boolean aC, int jSR, int cSR, int cKSR, int sZSR, int aTPG, int gV, int gSR, int gFCR,
+    public Robot(String rN, int botNum, boolean aC, int jSR, int cSR, int cKSR, int sZSR, int aTPG, int gV, int gSR, int gFCR,
     boolean gFRAE, int rSR, int sRSR, int tRZ, int aTPR, int rV, int bSR){
         robotName = rN;
         allianceColor = aC;
+        robotNum = botNum;
         //auto
         jewelSR = jSR;
         cryptoboxSR = cSR;
@@ -109,6 +112,12 @@ public class Robot
     }   
     public void timeIncrement(){
         time++;
+    }
+    public int getNum(){
+        return robotNum;
+    }
+    public String getBotName(){
+        return robotName+" from " + robotNum;
     }
     public String toString(){
         String str = "";

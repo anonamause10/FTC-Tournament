@@ -9,6 +9,11 @@ public class BalanceBoard implements GameElement
 {
     private boolean hasRobot;
     private boolean side;//true is red
+    public BalanceBoard(boolean side){
+        this.side = side;
+        hasRobot = false;
+    }
+    
     public boolean canBeScored(int time){
         return time>= 120;
     }
