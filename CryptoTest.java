@@ -1,4 +1,5 @@
-
+import java.io.*;
+import java.util.*;
 /**
  * Write a description of class CryptoTest here.
  *
@@ -9,14 +10,23 @@ public class CryptoTest
 {
     public static void main(String[]args){
         GlyphPit g = new GlyphPit();
+        Robot bot = new Robot();
+        try{
+            bot = CreateTeams.createTeams().get(0).getRobot();
+        }catch(IOException e){
+            e.printStackTrace();
+        }
         Cryptobox x = new Cryptobox(true, g);
+        System.out.println(bot.getAutoCrypto());
+        System.out.println(bot.getAutoKey());
         Relic r = new Relic(true, x);
         Glyph w = new Glyph(1);
         Glyph b = new Glyph(0);
-        x.scoreGlyph(b,1);
+        x.getAutoPoints(bot, 1);
+        /*x.scoreGlyph(b,1);
         x.scoreGlyph(w,1);
         x.scoreGlyph(w,1);
-        x.scoreGlyph(b,1);
+        x.scoreGlyph(b,1);*/
         x.scoreGlyph(w,2);
         x.scoreGlyph(b,2);
         x.scoreGlyph(b,2);
