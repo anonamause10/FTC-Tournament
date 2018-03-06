@@ -26,14 +26,15 @@ public class Cryptobox
     private final Glyph[][] cipher4 = new Glyph[][]{{w, b, w}, {b, w, b}, {b, w, b}, {w, b, w}};
     private final Glyph[][] cipher5 = new Glyph[][]{{b, w, w}, {b, b, w}, {w, b, b}, {w, w, b}};
     private final Glyph[][] cipher6 = new Glyph[][]{{w, b, b}, {w, w, b}, {b, w, w}, {b, b, w}};
-    
-    public Cryptobox(boolean color){
+    private GlyphPit pit;
+    public Cryptobox(boolean color, GlyphPit g){
         this.color = color;
         box = new Glyph[4][3];
         robotInZone = false;
         isFull = false;
+        pit = g;
     }
-    
+
     public int getAutoPoints(Robot r, int n){//1 is left 3 is right
         int score = 0;
         if(r.getAutoCrypto()){
@@ -41,10 +42,22 @@ public class Cryptobox
         }
         if(r.getAutoKey()){
             score += 30;
+            scoreGlyph(pit.getRandGlyph(),n);
+        }
+        if(r.getAutoGlyphs()){
+            for(int i = 0; i<r.numAutoGlyphs()-1; i++){
+                score+=15;
+                if(!canScore(n)){
+                    n++;
+                }
+                if(n>=3){
+                    n = 1;
+                }
+            }
         }
         return 0;
     }
-    
+
     public int getTelePoints(){
         int glyphs = 0;
         for(int r = 0; r < 4; r++){
@@ -96,6 +109,15 @@ public class Cryptobox
         return counter;
     }
 
+    public boolean canScore(int col/**1-2*/){
+        int[] boxCount = {rowCount1, rowCount2, rowCount3};
+        if(boxCount[col-1] ==0){
+            return false;
+        }
+        
+        return true;
+    }
+    
     public boolean checkCipher(){
         isFull = this.checkColumns()==3&&this.checkRows()==4;
         if (!isFull){
@@ -141,7 +163,6 @@ public class Cryptobox
 
         return str;
     }
-
 
     private boolean checkCipher1(){
         for(int i = 0; i < box.length; i++){

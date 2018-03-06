@@ -8,7 +8,8 @@
 public class CryptoTest
 {
     public static void main(String[]args){
-        Cryptobox x = new Cryptobox(true);
+        GlyphPit g = new GlyphPit();
+        Cryptobox x = new Cryptobox(true, g);
         Relic r = new Relic(true, x);
         Glyph w = new Glyph(1);
         Glyph b = new Glyph(0);

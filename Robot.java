@@ -80,6 +80,12 @@ public class Robot
     public boolean getAutoKey(){
         return (cryptoKeySR <= ((Math.random() * 100) + 1));
     }
+    public int numAutoGlyphs(){
+        return (30/(avgTimePerGlyph*3));
+    }
+    public boolean getAutoGlyphs(){
+        return cryptoboxSR>=90&&cryptoKeySR>=90;
+    }
     public boolean getSafeZone(){
         return (safeZoneSR <= ((Math.random() * 100) + 1));
     }

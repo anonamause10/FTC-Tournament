@@ -32,10 +32,10 @@ public class Field
     
     public Field(Robot rR, Robot bR, Robot rO, Robot bO){
         pit = new GlyphPit();
-        rRCrypto = new Cryptobox(true);
-        bRCrypto = new Cryptobox(false);
-        bOCrypto = new Cryptobox(false);
-        rOCrypto = new Cryptobox(true);
+        rRCrypto = new Cryptobox(true, pit);
+        bRCrypto = new Cryptobox(false, pit);
+        bOCrypto = new Cryptobox(false, pit);
+        rOCrypto = new Cryptobox(true, pit);
         rRJewelBoard = new JewelBoard(true); 
         bRJewelBoard = new JewelBoard(false); 
         rOJewelBoard = new JewelBoard(true); 
@@ -54,8 +54,7 @@ public class Field
         bOBot = bO;
     }
     
-    public void play(){
-        
+    public void autoPlay(){
         
         
     }
