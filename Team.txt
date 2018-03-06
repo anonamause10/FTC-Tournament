@@ -1,6 +1,14 @@
 R.I.C.E.
-6199 10 9 9 9 5 7 10 8 8 7 true 
+6199 10 6 3 9 5 7 10 8 8 7 true 
 Bronco Bots
 6200 10 9 9 9 5 7 10 8 8 7 false 
 N.Y.A.N. Robotics
 10091 9.5 9 10 9 9 9 9 9 8 8 false
+Unknown Element
+10635 10 9 7 8 8 8 9 8 9 7 false
+Blue Box Bots
+8907 9 9 9 9 9 9 9 9 9 9 false  
+Cary Grove Robotics
+13193 7 7 8 9 8 9 8 9 8 7 true
+The Golden Ratio
+12682 9 10 10 10 10 10 10 10 9 9 true
