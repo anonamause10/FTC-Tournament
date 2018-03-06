@@ -3,11 +3,11 @@ public class Relic implements GameElement{
     private boolean side; //true is red
     private int scoreZone;
     private Cryptobox box;
-    public Relic (boolean side){
+    public Relic (boolean side, Cryptobox b){
         isStanding = false;
         scoreZone = 0;
         this.side = side;
-        box = new Cryptobox(false);
+        box = b;
     }
 
     public void setStanding(boolean b){
@@ -18,13 +18,13 @@ public class Relic implements GameElement{
         scoreZone = s;
     }
 
-    public void setSide(boolean b){
+    public void setSide(boolean b, Cryptobox bo){
         side = b;
-        box = new Cryptobox(b);
+        box = bo;
     }
 
     public boolean canBeScored(int time){
-        if(time >= 120){
+        if(time >= 120||box.checkCipher()){
             return true;
         }
         return false;

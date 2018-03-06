@@ -40,10 +40,10 @@ public class Field
         bRJewelBoard = new JewelBoard(false); 
         rOJewelBoard = new JewelBoard(true); 
         bOJewelBoard = new JewelBoard(false);
-        rRRelic = new Relic(true);
-        bRRelic = new Relic(false);
-        rORelic = new Relic(true);
-        bORelic = new Relic(false);
+        rRRelic = new Relic(true, rRCrypto);
+        bRRelic = new Relic(false, bRCrypto);
+        rORelic = new Relic(true, rOCrypto);
+        bORelic = new Relic(false, bOCrypto);
         rRBoard = new BalanceBoard(true);
         bRBoard = new BalanceBoard(false);
         rOBoard = new BalanceBoard(true);
@@ -54,5 +54,9 @@ public class Field
         bOBot = bO;
     }
     
-    
+    public void play(){
+        
+        
+        
+    }
 }
