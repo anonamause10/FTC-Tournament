@@ -15,6 +15,7 @@ public class Cryptobox
     private boolean isFull;
     private Glyph w = new Glyph(1);
     private Glyph b = new Glyph(0);
+    private int glyphs;
     private int rowCount1 = 3;
     private int rowCount2 = 3;
     private int rowCount3 = 3;
@@ -39,6 +40,7 @@ public class Cryptobox
         int score = 0;
         if(r.getAutoCrypto()){
             score += 15;
+            glyphs++;
         }
         if(r.getAutoKey()){
             score += 30;
@@ -48,6 +50,7 @@ public class Cryptobox
             for(int i = 0; i<r.numAutoGlyphs()-1; i++){
                 score+=15;
                 scoreGlyph(pit.getRandGlyph(),n);
+                glyphs++;
                 if(!canScore(n)){
                     n++;
                 }
@@ -66,6 +69,7 @@ public class Cryptobox
             for(int c = 0; c < 3; c++){
                 if(box[r][c] != null){
                     glyphs++;
+                    this.glyphs+=glyphs;
                 }
             }
         }
@@ -92,72 +96,8 @@ public class Cryptobox
     }
 
     public void selfScoreGlyphs(Robot r){
-
-    }
-
-    public boolean partOfCipher(){
-        int countNull = 0;
-        boolean c1 = true;
-        boolean c2 = true;
-        boolean c3 = true;
-        boolean c4 = true;
-        boolean c5 = true;
-        boolean c6 = true;
-        for(int i = 0; i<4; i++){
-            for(int k = 0; k<3; k++){
-                if(box[i][k] == null){
-                    countNull ++;
-                }
-            }
-        }
-        if(countNull==12){
-            return false;
-        }
-
-        for(int i = 0; i<4; i++){
-            for(int k = 0; k<3; k++){
-                if(!box[i][k].equals(cipher1[i][k])&&box[i][k]!=null){
-                    c1= false;
-                }
-            }
-        }
-        for(int i = 0; i<4; i++){
-            for(int k = 0; k<3; k++){
-                if(!box[i][k].equals(cipher2[i][k])&&box[i][k]!=null){
-                    c2= false;
-                }
-            }
-        }
-        for(int i = 0; i<4; i++){
-            for(int k = 0; k<3; k++){
-                if(!box[i][k].equals(cipher3[i][k])&&box[i][k]!=null){
-                    c3= false;
-                }
-            }
-        }
-        for(int i = 0; i<4; i++){
-            for(int k = 0; k<3; k++){
-                if(!box[i][k].equals(cipher4[i][k])&&box[i][k]!=null){
-                    c4= false;
-                }
-            }
-        }
-        for(int i = 0; i<4; i++){
-            for(int k = 0; k<3; k++){
-                if(!box[i][k].equals(cipher5[i][k])&&box[i][k]!=null){
-                    c5= false;
-                }
-            }
-        }
-        for(int i = 0; i<4; i++){
-            for(int k = 0; k<3; k++){
-                if(!box[i][k].equals(cipher4[i][k])&&box[i][k]!=null){
-                    c6= false;
-                }
-            }
-        }
-        return c1||c2||c3||c4||c5||c6;
-    }   
+        
+    } 
 
     public int checkRows(){
         int counter = 0;
@@ -179,9 +119,9 @@ public class Cryptobox
         return counter;
     }
 
-    public boolean canScore(int col/**1-2*/){
+    public boolean canScore(int col/**1-3*/){
         int[] boxCount = {rowCount1, rowCount2, rowCount3};
-        if(boxCount[col-1] ==0){
+        if(boxCount[col-1] ==-1){
             return false;
         }
 
@@ -306,4 +246,150 @@ public class Cryptobox
         return true;
     }
 
+    public boolean isCipherEmpty(){
+        int countNull = 0;
+        for(int i = 0; i<4; i++){
+            for(int k = 0; k<3; k++){
+                if(box[i][k] == null){
+                    countNull ++;
+                }
+            }
+        }
+        if(countNull==12){
+            return true;
+        }
+        return false;
+    }
+    
+    public boolean partOfCipher(){
+        
+        boolean c1 = partOfCipher1();
+        boolean c2 = partOfCipher2();
+        boolean c3 = partOfCipher3();
+        boolean c4 = partOfCipher4();
+        boolean c5 = partOfCipher5();
+        boolean c6 = partOfCipher6();
+        
+        if(isCipherEmpty()){
+            return false;
+        }
+
+        
+        return c1||c2||c3||c4||c5||c6;
+    }  
+    
+    public String cipherWorkingOn(){
+        String str = "";
+        if(isCipherEmpty()){
+            return "Empty Cryptobox";
+        }
+        if(glyphs>6){
+            if(partOfCipher1()||partOfCipher2()){
+                return "Frog Cryptobox";
+            }
+            if(partOfCipher3()||partOfCipher4()){
+                return "Bird Cryptobox";
+            }
+            if(partOfCipher5()||partOfCipher6()){
+                return "Snake Cryptobox";
+            }
+        }
+        return "Working on Cryptobox";
+    }
+    
+    public boolean partOfCipher1(){
+        if(isCipherEmpty()){
+            return false;
+        }
+        
+        boolean c = true;
+        for(int i = 0; i<4; i++){
+            for(int k = 0; k<3; k++){
+                if(box[i][k]!=null&&!box[i][k].equals(cipher1[i][k])){
+                    c= false;
+                }
+            }
+        }
+        return c;
+    }
+    
+    public boolean partOfCipher2(){
+        if(isCipherEmpty()){
+            return false;
+        }
+        
+        boolean c = true;
+        for(int i = 0; i<4; i++){
+            for(int k = 0; k<3; k++){
+                if(box[i][k]!=null&&!box[i][k].equals(cipher2[i][k])){
+                    c= false;
+                }
+            }
+        }
+        return c;
+    }
+    
+    public boolean partOfCipher3(){
+        if(isCipherEmpty()){
+            return false;
+        }
+        
+        boolean c = true;
+        for(int i = 0; i<4; i++){
+            for(int k = 0; k<3; k++){
+                if(box[i][k]!=null&&!box[i][k].equals(cipher3[i][k])){
+                    c= false;
+                }
+            }
+        }
+        return c;
+    }
+    
+    public boolean partOfCipher4(){
+        if(isCipherEmpty()){
+            return false;
+        }
+        
+        boolean c = true;
+        for(int i = 0; i<4; i++){
+            for(int k = 0; k<3; k++){
+                if(box[i][k]!=null&&!box[i][k].equals(cipher4[i][k])){
+                    c= false;
+                }
+            }
+        }
+        return c;
+    }
+    
+    public boolean partOfCipher5(){
+        if(isCipherEmpty()){
+            return false;
+        }
+        
+        boolean c = true;
+        for(int i = 0; i<4; i++){
+            for(int k = 0; k<3; k++){
+                if(box[i][k]!=null&&!box[i][k].equals(cipher5[i][k])){
+                    c= false;
+                }
+            }
+        }
+        return c;
+    }
+    
+    public boolean partOfCipher6(){
+        if(isCipherEmpty()){
+            return false;
+        }
+        
+        boolean c = true;
+        for(int i = 0; i<4; i++){
+            for(int k = 0; k<3; k++){
+                if(box[i][k]!=null&&!box[i][k].equals(cipher6[i][k])){
+                    c= false;
+                }
+            }
+        }
+        return c;
+    }
 }

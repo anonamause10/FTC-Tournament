@@ -22,11 +22,11 @@ public class CryptoTest
         Relic r = new Relic(true, x);
         Glyph w = new Glyph(1);
         Glyph b = new Glyph(0);
-        //x.getAutoPoints(bot, 1);
-        x.scoreGlyph(b,1);
+        x.getAutoPoints(bot, 1);
+        /*x.scoreGlyph(b,1);
         x.scoreGlyph(w,1);
         x.scoreGlyph(w,1);
-        x.scoreGlyph(b,1);
+        x.scoreGlyph(b,1);*/
         x.scoreGlyph(w,2);
         x.scoreGlyph(b,2);
         x.scoreGlyph(b,2);
@@ -40,5 +40,7 @@ public class CryptoTest
         System.out.println(x.whichCiph());
         System.out.println(r.canBeScored(0));
         System.out.println(x.getTelePoints());
+        System.out.println(x.partOfCipher());
+        System.out.println(x.canScore(1));
     }
 }
