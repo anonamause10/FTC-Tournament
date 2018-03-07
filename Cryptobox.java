@@ -90,7 +90,11 @@ public class Cryptobox
             rowCount3--;
         }
     }
-
+    
+    public void selfScoreGlyphs(Robot r){
+        int time = 0;
+    }
+    
     public int checkRows(){
         int counter = 0;
         for(int i = 0; i < 4; i++){
