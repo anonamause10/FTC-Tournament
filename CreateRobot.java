@@ -16,7 +16,7 @@ public class CreateRobot
             temp = new Robot(s.nextLine(), s.nextInt(), s.nextBoolean(), 
                 s.nextInt(), s.nextInt(), 
                 s.nextInt(), s.nextInt(), s.nextInt(), s.nextInt(), s.nextInt(), 
-                s.nextInt(), s.nextBoolean(), s.nextInt(), s.nextInt(), s.nextInt(), 
+                s.nextInt(), s.nextInt(), s.nextBoolean(), s.nextInt(), s.nextInt(), s.nextInt(), 
                 s.nextInt(), s.nextInt(), s.nextInt());
             bots.add(temp);
             s.nextLine();

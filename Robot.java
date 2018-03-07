@@ -12,6 +12,7 @@ public class Robot
     private int glyphVariance; //seconds
     private int glyphSR;
     private int goForCipherRate;
+    private int preferredCipher;
     private boolean goForRelicAtEndgame;
     private int relicSR;
     private int standingRelicSR;
@@ -41,7 +42,7 @@ public class Robot
         balanceSR = 0;
         time = 0;
     }
-    public Robot(String rN, int botNum, boolean aC, int jSR, int cSR, int cKSR, int sZSR, int aTPG, int gV, int gSR, int gFCR,
+    public Robot(String rN, int botNum, boolean aC, int jSR, int cSR, int cKSR, int sZSR, int aTPG, int gV, int gSR, int gFCR, int pC,
     boolean gFRAE, int rSR, int sRSR, int tRZ, int aTPR, int rV, int bSR){
         robotName = rN;
         allianceColor = aC;
@@ -56,6 +57,7 @@ public class Robot
         glyphVariance = gV;
         glyphSR = gSR;
         goForCipherRate = gFCR;
+        preferredCipher = pC;
         goForRelicAtEndgame = gFRAE;
         relicSR = rSR;
         standingRelicSR = sRSR;
@@ -97,6 +99,9 @@ public class Robot
     }
     public boolean getGoForCipher(){
         return goForRelicAtEndgame;
+    }
+    public int getPrefCipher(){
+        return preferredCipher;
     }
     public boolean getRelic(){
         return (relicSR >= ((Math.random() * 100) + 1));

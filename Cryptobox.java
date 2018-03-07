@@ -90,11 +90,75 @@ public class Cryptobox
             rowCount3--;
         }
     }
-    
+
     public void selfScoreGlyphs(Robot r){
-        int time = 0;
+
     }
-    
+
+    public boolean partOfCipher(){
+        int countNull = 0;
+        boolean c1 = true;
+        boolean c2 = true;
+        boolean c3 = true;
+        boolean c4 = true;
+        boolean c5 = true;
+        boolean c6 = true;
+        for(int i = 0; i<4; i++){
+            for(int k = 0; k<3; k++){
+                if(box[i][k] == null){
+                    countNull ++;
+                }
+            }
+        }
+        if(countNull==12){
+            return false;
+        }
+
+        for(int i = 0; i<4; i++){
+            for(int k = 0; k<3; k++){
+                if(!box[i][k].equals(cipher1[i][k])&&box[i][k]!=null){
+                    c1= false;
+                }
+            }
+        }
+        for(int i = 0; i<4; i++){
+            for(int k = 0; k<3; k++){
+                if(!box[i][k].equals(cipher2[i][k])&&box[i][k]!=null){
+                    c2= false;
+                }
+            }
+        }
+        for(int i = 0; i<4; i++){
+            for(int k = 0; k<3; k++){
+                if(!box[i][k].equals(cipher3[i][k])&&box[i][k]!=null){
+                    c3= false;
+                }
+            }
+        }
+        for(int i = 0; i<4; i++){
+            for(int k = 0; k<3; k++){
+                if(!box[i][k].equals(cipher4[i][k])&&box[i][k]!=null){
+                    c4= false;
+                }
+            }
+        }
+        for(int i = 0; i<4; i++){
+            for(int k = 0; k<3; k++){
+                if(!box[i][k].equals(cipher5[i][k])&&box[i][k]!=null){
+                    c5= false;
+                }
+            }
+        }
+        for(int i = 0; i<4; i++){
+            for(int k = 0; k<3; k++){
+                if(!box[i][k].equals(cipher4[i][k])&&box[i][k]!=null){
+                    c6= false;
+                }
+            }
+        }
+        return c1||c2||c3||c4||c5||c6;
+    }   
+
     public int checkRows(){
         int counter = 0;
         for(int i = 0; i < 4; i++){
@@ -120,10 +184,10 @@ public class Cryptobox
         if(boxCount[col-1] ==0){
             return false;
         }
-        
+
         return true;
     }
-    
+
     public boolean checkCipher(){
         isFull = this.checkColumns()==3&&this.checkRows()==4;
         if (!isFull){
