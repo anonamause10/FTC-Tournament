@@ -16,6 +16,7 @@ public class Cryptobox
     private Glyph w = new Glyph(1);
     private Glyph b = new Glyph(0);
     private int glyphs;
+    private int rowOn;
     private int rowCount1 = 3;
     private int rowCount2 = 3;
     private int rowCount3 = 3;
@@ -27,6 +28,7 @@ public class Cryptobox
     private final Glyph[][] cipher4 = new Glyph[][]{{w, b, w}, {b, w, b}, {b, w, b}, {w, b, w}};
     private final Glyph[][] cipher5 = new Glyph[][]{{b, w, w}, {b, b, w}, {w, b, b}, {w, w, b}};
     private final Glyph[][] cipher6 = new Glyph[][]{{w, b, b}, {w, w, b}, {b, w, w}, {b, b, w}};
+    private final Glyph[][][] ciphers = new Glyph[][][]{cipher1, cipher2, cipher3, cipher4, cipher5, cipher6};
     private GlyphPit pit;
     public Cryptobox(boolean color, GlyphPit g){
         this.color = color;
@@ -34,6 +36,7 @@ public class Cryptobox
         robotInZone = false;
         isFull = false;
         pit = g;
+        rowOn = 0;
     }
 
     public int getAutoPoints(Robot r, int n){//1 is left 3 is right
@@ -96,7 +99,15 @@ public class Cryptobox
     }
 
     public void selfScoreGlyphs(Robot r){
-        
+        if(isBoxEmpty()){
+            if(r.getGoForCipher()){
+                if(partOfCipher()){
+                    
+                }
+            }else{
+                scoreGlyph(pit.getRandGlyph(),rowOn);
+            }
+        }
     } 
 
     public int checkRows(){
@@ -246,7 +257,7 @@ public class Cryptobox
         return true;
     }
 
-    public boolean isCipherEmpty(){
+    public boolean isBoxEmpty(){
         int countNull = 0;
         for(int i = 0; i<4; i++){
             for(int k = 0; k<3; k++){
@@ -270,7 +281,7 @@ public class Cryptobox
         boolean c5 = partOfCipher5();
         boolean c6 = partOfCipher6();
         
-        if(isCipherEmpty()){
+        if(isBoxEmpty()){
             return false;
         }
 
@@ -280,7 +291,7 @@ public class Cryptobox
     
     public String cipherWorkingOn(){
         String str = "";
-        if(isCipherEmpty()){
+        if(isBoxEmpty()){
             return "Empty Cryptobox";
         }
         if(glyphs>6){
@@ -298,7 +309,7 @@ public class Cryptobox
     }
     
     public boolean partOfCipher1(){
-        if(isCipherEmpty()){
+        if(isBoxEmpty()){
             return false;
         }
         
@@ -314,7 +325,7 @@ public class Cryptobox
     }
     
     public boolean partOfCipher2(){
-        if(isCipherEmpty()){
+        if(isBoxEmpty()){
             return false;
         }
         
@@ -330,7 +341,7 @@ public class Cryptobox
     }
     
     public boolean partOfCipher3(){
-        if(isCipherEmpty()){
+        if(isBoxEmpty()){
             return false;
         }
         
@@ -346,7 +357,7 @@ public class Cryptobox
     }
     
     public boolean partOfCipher4(){
-        if(isCipherEmpty()){
+        if(isBoxEmpty()){
             return false;
         }
         
@@ -362,7 +373,7 @@ public class Cryptobox
     }
     
     public boolean partOfCipher5(){
-        if(isCipherEmpty()){
+        if(isBoxEmpty()){
             return false;
         }
         
@@ -378,7 +389,7 @@ public class Cryptobox
     }
     
     public boolean partOfCipher6(){
-        if(isCipherEmpty()){
+        if(isBoxEmpty()){
             return false;
         }
         

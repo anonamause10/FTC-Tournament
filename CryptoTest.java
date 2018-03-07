@@ -42,5 +42,6 @@ public class CryptoTest
         System.out.println(x.getTelePoints());
         System.out.println(x.partOfCipher());
         System.out.println(x.canScore(1));
+        System.out.println(x.cipherWorkingOn());
     }
 }
