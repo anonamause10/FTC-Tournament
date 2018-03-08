@@ -100,7 +100,7 @@ public class Robot
     public boolean getGoForCipher(){
         return goForRelicAtEndgame;
     }
-    public int getPrefCipher(){
+    public int getTargetCipher(){
         return preferredCipher;
     }
     public boolean getRelic(){

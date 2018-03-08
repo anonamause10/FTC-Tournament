@@ -9,12 +9,13 @@ public class GlyphPit
 {
     private List<Glyph> whites;
     private List<Glyph> browns;
-    
+    private int cryptoKey; //l left 3 right
     public GlyphPit(){
         Glyph w = new Glyph(1);
         Glyph b = new Glyph(0);
         whites = new ArrayList<Glyph>();
         browns = new ArrayList<Glyph>();
+        cryptoKey = (int)(Math.random() * 3.0 + 1.0);
         for(int i = 0; i<24; i++){
             whites.add(w);
             
@@ -44,5 +45,9 @@ public class GlyphPit
     
     public Glyph getBrownGlyph(){
         return browns.remove(0);
+    }
+     
+    public int getCryptoKey(){
+        return cryptoKey;
     }
 }

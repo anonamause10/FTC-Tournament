@@ -97,16 +97,23 @@ public class Cryptobox
             rowCount3--;
         }
     }
+    
+    public void autoFirstGlyph(Robot r){
+        if(r.getAutoCrypto()){
+            if(r.getAutoKey()){
+                scoreGlyph(pit.getRandGlyph(), pit.getCryptoKey());
+            }
+            scoreGlyph(pit.getRandGlyph(), (int)(Math.random() * 3 + 2));
+        }
+    }
 
     public void selfScoreGlyphs(Robot r){
-        if(isBoxEmpty()){
-            if(r.getGoForCipher()){
-                if(partOfCipher()){
-                    
-                }
-            }else{
-                scoreGlyph(pit.getRandGlyph(),rowOn);
+        if(r.getGoForCipher()){
+            if(partOfCipher()){
+                
             }
+        }else{
+            scoreGlyph(pit.getRandGlyph(),rowOn);
         }
     } 
 
@@ -271,24 +278,23 @@ public class Cryptobox
         }
         return false;
     }
-    
+
     public boolean partOfCipher(){
-        
+
         boolean c1 = partOfCipher1();
         boolean c2 = partOfCipher2();
         boolean c3 = partOfCipher3();
         boolean c4 = partOfCipher4();
         boolean c5 = partOfCipher5();
         boolean c6 = partOfCipher6();
-        
+
         if(isBoxEmpty()){
             return false;
         }
 
-        
         return c1||c2||c3||c4||c5||c6;
     }  
-    
+
     public String cipherWorkingOn(){
         String str = "";
         if(isBoxEmpty()){
@@ -307,12 +313,12 @@ public class Cryptobox
         }
         return "Working on Cryptobox";
     }
-    
+
     public boolean partOfCipher1(){
         if(isBoxEmpty()){
             return false;
         }
-        
+
         boolean c = true;
         for(int i = 0; i<4; i++){
             for(int k = 0; k<3; k++){
@@ -323,12 +329,12 @@ public class Cryptobox
         }
         return c;
     }
-    
+
     public boolean partOfCipher2(){
         if(isBoxEmpty()){
             return false;
         }
-        
+
         boolean c = true;
         for(int i = 0; i<4; i++){
             for(int k = 0; k<3; k++){
@@ -339,12 +345,12 @@ public class Cryptobox
         }
         return c;
     }
-    
+
     public boolean partOfCipher3(){
         if(isBoxEmpty()){
             return false;
         }
-        
+
         boolean c = true;
         for(int i = 0; i<4; i++){
             for(int k = 0; k<3; k++){
@@ -355,12 +361,12 @@ public class Cryptobox
         }
         return c;
     }
-    
+
     public boolean partOfCipher4(){
         if(isBoxEmpty()){
             return false;
         }
-        
+
         boolean c = true;
         for(int i = 0; i<4; i++){
             for(int k = 0; k<3; k++){
@@ -371,12 +377,12 @@ public class Cryptobox
         }
         return c;
     }
-    
+
     public boolean partOfCipher5(){
         if(isBoxEmpty()){
             return false;
         }
-        
+
         boolean c = true;
         for(int i = 0; i<4; i++){
             for(int k = 0; k<3; k++){
@@ -387,12 +393,12 @@ public class Cryptobox
         }
         return c;
     }
-    
+
     public boolean partOfCipher6(){
         if(isBoxEmpty()){
             return false;
         }
-        
+
         boolean c = true;
         for(int i = 0; i<4; i++){
             for(int k = 0; k<3; k++){
