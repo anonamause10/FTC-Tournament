@@ -109,23 +109,22 @@ public class Cryptobox
     }
 
     public void selfScoreGlyph(Robot r){
+        int n = 1;
         if(r.getGoForCipher()){
             if(partOfCipher()){
                 int wC = whichCipherWorkingOn()-1;
-                int n = 1;
                 if(!(canScore(n))){
                     n++;
                     if(n>3){
                         n = 1;
                     }
                 }
-                if(ciphers[row[n-1]][n-1][r.getTargetCipher()-1].equals(w)){
-                        scoreGlyph(pit.getWhiteGlyph(), n);
-                    }else if(ciphers[row[n-1]][n-1][r.getTargetCipher()-1].equals(b)){
-                        scoreGlyph(pit.getBrownGlyph(), n);
-                    }
+                if(ciphers[wC][row[n-1]][n-1].equals(w)){
+                    scoreGlyph(pit.getWhiteGlyph(), n);
+                }else if(ciphers[row[n-1]][n-1][wC].equals(b)){
+                    scoreGlyph(pit.getBrownGlyph(), n);
+                }
             }else{
-                int n = 1;
                 if(!(canScore(n))){
                     n++;
                     if(n>3){
@@ -133,7 +132,7 @@ public class Cryptobox
                     }
                 }
                 if(whichCipherWorkingOn()==-1){//empty cipher
-                    
+
                     if(ciphers[row[n-1]][n-1][r.getTargetCipher()-1].equals(w)){
                         scoreGlyph(pit.getWhiteGlyph(), n);
                     }else if(ciphers[row[n-1]][n-1][r.getTargetCipher()-1].equals(b)){
@@ -352,23 +351,24 @@ public class Cryptobox
         if(isBoxEmpty()){
             return -1;
         }
-        if(partOfCipher1()){
-            return 1;
-        }
-        if(partOfCipher2()){
-            return 2;
-        }
-        if(partOfCipher3()){
-            return 3;
-        }
-        if(partOfCipher4()){
-            return 4;
-        }
-        if(partOfCipher5()){
-            return 5;
-        }
-        if(partOfCipher6()){
-            return 6;
+        if(glyphs>1){if(partOfCipher1()){
+                return 1;
+            }
+            if(partOfCipher2()){
+                return 2;
+            }
+            if(partOfCipher3()){
+                return 3;
+            }
+            if(partOfCipher4()){
+                return 4;
+            }
+            if(partOfCipher5()){
+                return 5;
+            }
+            if(partOfCipher6()){
+                return 6;
+            }
         }
 
         return 0;
