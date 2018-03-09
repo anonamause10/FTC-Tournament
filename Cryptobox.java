@@ -20,6 +20,7 @@ public class Cryptobox
     private int rowCount1 = 3;
     private int rowCount2 = 3;
     private int rowCount3 = 3;
+    private int[] row = {rowCount1, rowCount2, rowCount3};
     private int autoScore = 0;
     private int teleScore = 0;
     private final Glyph[][] cipher1 = new Glyph[][]{{w, b, w}, {b, w, b}, {w, b, w}, {b, w, b}};
@@ -111,6 +112,16 @@ public class Cryptobox
         if(r.getGoForCipher()){
             if(partOfCipher()){
                 
+            }else{
+                int n = 1;
+                if(whichCipherWorkingOn()==-1){//empty cipher
+                    Glyph temp;
+                    if(ciphers[row[n-1]][n][r.getTargetCipher()-1].equals(w)){
+                        scoreGlyph(pit.getWhiteGlyph(), n);
+                    }else if(ciphers[row[n-1]][n][r.getTargetCipher()-1].equals(b)){
+                        scoreGlyph(pit.getBrownGlyph(), n);
+                    }
+                }
             }
         }else{
             scoreGlyph(pit.getRandGlyph(),rowOn);
@@ -312,6 +323,32 @@ public class Cryptobox
             }
         }
         return "Working on Cryptobox";
+    }
+    
+    public int whichCipherWorkingOn(){//-1 is empty, 0 is no cipher
+        if(isBoxEmpty()){
+            return -1;
+        }
+        if(partOfCipher1()){
+            return 1;
+        }
+        if(partOfCipher2()){
+            return 2;
+        }
+        if(partOfCipher3()){
+            return 3;
+        }
+        if(partOfCipher4()){
+            return 4;
+        }
+        if(partOfCipher5()){
+            return 5;
+        }
+        if(partOfCipher6()){
+            return 6;
+        }
+        
+        return 0;
     }
 
     public boolean partOfCipher1(){
