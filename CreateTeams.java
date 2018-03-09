@@ -27,4 +27,10 @@ public class CreateTeams
         }
         return teams;
     }
+    
+    public static Team[] teamArray(List<Team> boiz){
+     
+        Team[] teams = boiz.toArray(new Team[boiz.size()]);
+        return teams;
+    }
 }
