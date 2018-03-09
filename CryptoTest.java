@@ -34,7 +34,8 @@ public class CryptoTest
         x.scoreGlyph(b,3);
         x.scoreGlyph(w,3);
         x.scoreGlyph(w,3);
-        x.scoreGlyph(b,3);
+        //x.scoreGlyph(b,3);
+        x.selfScoreGlyph(bot);
         System.out.println(x.printCiph());
         System.out.println(x.checkCipher());
         System.out.println(x.whichCiph());
@@ -43,6 +44,8 @@ public class CryptoTest
         System.out.println(x.partOfCipher());
         System.out.println(x.canScore(1));
         System.out.println(x.cipherWorkingOn());
-
+        boolean n = false;
+        int k = n ? 4 : 5;
+        System.out.println(k);
     }
 }

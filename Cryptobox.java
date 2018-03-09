@@ -13,8 +13,8 @@ public class Cryptobox
     private boolean  color;//true is red, false is blue
     private boolean robotInZone;
     private boolean isFull;
-    private Glyph w = new Glyph(1);
-    private Glyph b = new Glyph(0);
+    private final Glyph w = new Glyph(1);
+    private final Glyph b = new Glyph(0);
     private int glyphs;
     private int rowOn;
     private int rowCount1 = 3;
@@ -98,7 +98,7 @@ public class Cryptobox
             rowCount3--;
         }
     }
-    
+
     public void autoFirstGlyph(Robot r){
         if(r.getAutoCrypto()){
             if(r.getAutoKey()){
@@ -108,20 +108,43 @@ public class Cryptobox
         }
     }
 
-    public void selfScoreGlyphs(Robot r){
+    public void selfScoreGlyph(Robot r){
         if(r.getGoForCipher()){
             if(partOfCipher()){
-                
-            }else{
+                int wC = whichCipherWorkingOn()-1;
                 int n = 1;
-                if(whichCipherWorkingOn()==-1){//empty cipher
-                    Glyph temp;
-                    if(ciphers[row[n-1]][n][r.getTargetCipher()-1].equals(w)){
-                        scoreGlyph(pit.getWhiteGlyph(), n);
-                    }else if(ciphers[row[n-1]][n][r.getTargetCipher()-1].equals(b)){
-                        scoreGlyph(pit.getBrownGlyph(), n);
+                if(!(canScore(n))){
+                    n++;
+                    if(n>3){
+                        n = 1;
                     }
                 }
+                if(ciphers[row[n-1]][n-1][r.getTargetCipher()-1].equals(w)){
+                        scoreGlyph(pit.getWhiteGlyph(), n);
+                    }else if(ciphers[row[n-1]][n-1][r.getTargetCipher()-1].equals(b)){
+                        scoreGlyph(pit.getBrownGlyph(), n);
+                    }
+            }else{
+                int n = 1;
+                if(!(canScore(n))){
+                    n++;
+                    if(n>3){
+                        n = 1;
+                    }
+                }
+                if(whichCipherWorkingOn()==-1){//empty cipher
+                    
+                    if(ciphers[row[n-1]][n-1][r.getTargetCipher()-1].equals(w)){
+                        scoreGlyph(pit.getWhiteGlyph(), n);
+                    }else if(ciphers[row[n-1]][n-1][r.getTargetCipher()-1].equals(b)){
+                        scoreGlyph(pit.getBrownGlyph(), n);
+                    }
+                }else if(r.getTargetCipher()==0){//no target cipher
+                    scoreGlyph(pit.getRandGlyph(), n);
+                }else{
+                    scoreGlyph(pit.getRandGlyph(), n);
+                }
+
             }
         }else{
             scoreGlyph(pit.getRandGlyph(),rowOn);
@@ -324,7 +347,7 @@ public class Cryptobox
         }
         return "Working on Cryptobox";
     }
-    
+
     public int whichCipherWorkingOn(){//-1 is empty, 0 is no cipher
         if(isBoxEmpty()){
             return -1;
@@ -347,7 +370,7 @@ public class Cryptobox
         if(partOfCipher6()){
             return 6;
         }
-        
+
         return 0;
     }
 
