@@ -37,7 +37,7 @@ public class Cryptobox
         robotInZone = false;
         isFull = false;
         pit = g;
-        rowOn = 0;
+        rowOn = 1;
     }
 
     public int getAutoPoints(Robot r, int n){//1 is left 3 is right
@@ -111,7 +111,7 @@ public class Cryptobox
     public void selfScoreGlyph(Robot r){
         int n = 1;
         if(r.getGoForCipher()){
-            if(partOfCipher()){
+            if(false){
                 int wC = whichCipherWorkingOn()-1;
                 if(!(canScore(n))){
                     n++;
@@ -119,7 +119,7 @@ public class Cryptobox
                         n = 1;
                     }
                 }
-                if(ciphers[wC][row[n-1]][n-1].equals(w)){
+                if(ciphers[row[n-1]][n-1][wC].equals(w)){
                     scoreGlyph(pit.getWhiteGlyph(), n);
                 }else if(ciphers[row[n-1]][n-1][wC].equals(b)){
                     scoreGlyph(pit.getBrownGlyph(), n);
@@ -351,7 +351,8 @@ public class Cryptobox
         if(isBoxEmpty()){
             return -1;
         }
-        if(glyphs>1){if(partOfCipher1()){
+        if(glyphs>2){
+            if(partOfCipher1()){
                 return 1;
             }
             if(partOfCipher2()){

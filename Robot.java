@@ -98,7 +98,7 @@ public class Robot
         return (glyphSR >= ((Math.random() * 100) + 1));
     }
     public boolean getGoForCipher(){
-        return goForRelicAtEndgame;
+        return (goForCipherRate >= ((Math.random() * 100) + 1));
     }
     public int getTargetCipher(){
         return preferredCipher;
