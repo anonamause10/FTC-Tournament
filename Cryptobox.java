@@ -109,31 +109,22 @@ public class Cryptobox
     }
 
     public void selfScoreGlyph(Robot r){
-        
+        if(!(canScore(colOn))){
+            colOn++;
+            if(colOn>3){
+                colOn = 1;
+            }
+        }
         if(r.getGoForCipher()){
             int wC = whichCipherWorkingOn()-1;
-            if(wC>-1){
-                
-                if(!(canScore(colOn))){
-                    colOn++;
-                    if(colOn>3){
-                        colOn = 1;
-                    }
-                }
+            if(wC>-1){ 
                 if(ciphers[row[colOn-1]][colOn-1][wC].equals(w)){
                     scoreGlyph(pit.getWhiteGlyph(), colOn);
                 }else if(ciphers[row[colOn-1]][colOn-1][wC].equals(b)){
                     scoreGlyph(pit.getBrownGlyph(), colOn);
                 }
             }else{
-                if(!(canScore(colOn))){
-                    colOn++;
-                    if(colOn>3){
-                        colOn = 1;
-                    }
-                }
-                if(whichCipherWorkingOn()==-1){//empty cipher
-
+                if(wC==-2){//empty cipher
                     if(ciphers[row[colOn-1]][colOn-1][r.getTargetCipher()-1].equals(w)){
                         scoreGlyph(pit.getWhiteGlyph(), colOn);
                     }else if(ciphers[row[colOn-1]][colOn-1][r.getTargetCipher()-1].equals(b)){
@@ -144,7 +135,6 @@ public class Cryptobox
                 }else{
                     scoreGlyph(pit.getRandGlyph(), colOn);
                 }
-
             }
         }else{
             scoreGlyph(pit.getRandGlyph(),colOn);
