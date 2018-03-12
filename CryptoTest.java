@@ -12,7 +12,7 @@ public class CryptoTest
         GlyphPit g = new GlyphPit();
         Robot bot = new Robot();
         try{
-            bot = CreateTeams.createTeams().get(0).getRobot();
+            bot = CreateTeams.createTeams().get(3).getRobot();
         }catch(IOException e){
             e.printStackTrace();
         }

@@ -118,22 +118,26 @@ public class Cryptobox
         if(r.getGoForCipher()){
             int wC = whichCipherWorkingOn()-1;
             if(wC>-1){ 
-                if(ciphers[row[colOn-1]][colOn-1][wC].equals(w)){
+                if(ciphers[wC][row[colOn-1]][colOn-1].equals(w)){
                     scoreGlyph(pit.getWhiteGlyph(), colOn);
-                }else if(ciphers[row[colOn-1]][colOn-1][wC].equals(b)){
+                }else if(ciphers[wC][row[colOn-1]][colOn-1].equals(b)){
                     scoreGlyph(pit.getBrownGlyph(), colOn);
                 }
             }else{
                 if(wC==-2){//empty cipher
-                    if(ciphers[row[colOn-1]][colOn-1][r.getTargetCipher()-1].equals(w)){
+                    if(ciphers[r.getTargetCipher()-1][row[colOn-1]][colOn-1].equals(w)){
                         scoreGlyph(pit.getWhiteGlyph(), colOn);
-                    }else if(ciphers[row[colOn-1]][colOn-1][r.getTargetCipher()-1].equals(b)){
+                    }else if(ciphers[r.getTargetCipher()-1][row[colOn-1]][colOn-1].equals(b)){
                         scoreGlyph(pit.getBrownGlyph(), colOn);
                     }
                 }else if(r.getTargetCipher()==0){//no target cipher
                     scoreGlyph(pit.getRandGlyph(), colOn);
                 }else{
-                    scoreGlyph(pit.getRandGlyph(), colOn);
+                    if(ciphers[r.getTargetCipher()-1][row[colOn-1]][colOn-1].equals(w)){
+                        scoreGlyph(pit.getWhiteGlyph(), colOn);
+                    }else if(ciphers[r.getTargetCipher()-1][row[colOn-1]][colOn-1].equals(b)){
+                        scoreGlyph(pit.getBrownGlyph(), colOn);
+                    }
                 }
             }
         }else{
@@ -342,7 +346,7 @@ public class Cryptobox
         if(isBoxEmpty()){
             return -1;
         }
-        if(glyphs>2){
+        
             if(partOfCipher1()){
                 return 1;
             }
@@ -361,7 +365,7 @@ public class Cryptobox
             if(partOfCipher6()){
                 return 6;
             }
-        }
+        
 
         return 0;
     }
