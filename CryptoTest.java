@@ -36,7 +36,7 @@ public class CryptoTest
         x.selfScoreGlyph(bot);
         x.selfScoreGlyph(bot);
         x.selfScoreGlyph(bot);
-        x.selfScoreGlyph(bot);
+        
         
         /*x.scoreGlyph(b,1);
         x.scoreGlyph(w,1);

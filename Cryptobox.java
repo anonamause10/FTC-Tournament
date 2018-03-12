@@ -16,7 +16,7 @@ public class Cryptobox
     private final Glyph w = new Glyph(1);
     private final Glyph b = new Glyph(0);
     private int glyphs;
-    private int rowOn;
+    private int colOn;
     private int rowCount1 = 3;
     private int rowCount2 = 3;
     private int rowCount3 = 3;
@@ -37,7 +37,7 @@ public class Cryptobox
         robotInZone = false;
         isFull = false;
         pit = g;
-        rowOn = 1;
+        colOn = 1;
     }
 
     public int getAutoPoints(Robot r, int n){//1 is left 3 is right
@@ -109,44 +109,45 @@ public class Cryptobox
     }
 
     public void selfScoreGlyph(Robot r){
-        int n = 1;
+        
         if(r.getGoForCipher()){
-            if(false){
-                int wC = whichCipherWorkingOn()-1;
-                if(!(canScore(n))){
-                    n++;
-                    if(n>3){
-                        n = 1;
+            int wC = whichCipherWorkingOn()-1;
+            if(wC>-1){
+                
+                if(!(canScore(colOn))){
+                    colOn++;
+                    if(colOn>3){
+                        colOn = 1;
                     }
                 }
-                if(ciphers[row[n-1]][n-1][wC].equals(w)){
-                    scoreGlyph(pit.getWhiteGlyph(), n);
-                }else if(ciphers[row[n-1]][n-1][wC].equals(b)){
-                    scoreGlyph(pit.getBrownGlyph(), n);
+                if(ciphers[row[colOn-1]][colOn-1][wC].equals(w)){
+                    scoreGlyph(pit.getWhiteGlyph(), colOn);
+                }else if(ciphers[row[colOn-1]][colOn-1][wC].equals(b)){
+                    scoreGlyph(pit.getBrownGlyph(), colOn);
                 }
             }else{
-                if(!(canScore(n))){
-                    n++;
-                    if(n>3){
-                        n = 1;
+                if(!(canScore(colOn))){
+                    colOn++;
+                    if(colOn>3){
+                        colOn = 1;
                     }
                 }
                 if(whichCipherWorkingOn()==-1){//empty cipher
 
-                    if(ciphers[row[n-1]][n-1][r.getTargetCipher()-1].equals(w)){
-                        scoreGlyph(pit.getWhiteGlyph(), n);
-                    }else if(ciphers[row[n-1]][n-1][r.getTargetCipher()-1].equals(b)){
-                        scoreGlyph(pit.getBrownGlyph(), n);
+                    if(ciphers[row[colOn-1]][colOn-1][r.getTargetCipher()-1].equals(w)){
+                        scoreGlyph(pit.getWhiteGlyph(), colOn);
+                    }else if(ciphers[row[colOn-1]][colOn-1][r.getTargetCipher()-1].equals(b)){
+                        scoreGlyph(pit.getBrownGlyph(), colOn);
                     }
                 }else if(r.getTargetCipher()==0){//no target cipher
-                    scoreGlyph(pit.getRandGlyph(), n);
+                    scoreGlyph(pit.getRandGlyph(), colOn);
                 }else{
-                    scoreGlyph(pit.getRandGlyph(), n);
+                    scoreGlyph(pit.getRandGlyph(), colOn);
                 }
 
             }
         }else{
-            scoreGlyph(pit.getRandGlyph(),rowOn);
+            scoreGlyph(pit.getRandGlyph(),colOn);
         }
     } 
 
