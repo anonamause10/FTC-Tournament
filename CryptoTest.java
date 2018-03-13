@@ -12,7 +12,7 @@ public class CryptoTest
         GlyphPit g = new GlyphPit();
         Robot bot = new Robot();
         try{
-            bot = CreateTeams.createTeams().get(3).getRobot();
+            bot = CreateTeams.createTeams().get(4).getRobot();
         }catch(IOException e){
             e.printStackTrace();
         }
@@ -22,9 +22,9 @@ public class CryptoTest
         Relic r = new Relic(true, x);
         Glyph w = new Glyph(1);
         Glyph b = new Glyph(0);
-        x.getAutoPoints(bot, 1);
+        //x.getAutoPoints(bot, 1);
         System.out.println(x.isBoxEmpty());
-        //x.selfScoreGlyph(bot);
+        x.selfScoreGlyph(bot);
         x.selfScoreGlyph(bot);
         x.selfScoreGlyph(bot);
         x.selfScoreGlyph(bot);

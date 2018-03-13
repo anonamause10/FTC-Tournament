@@ -141,9 +141,10 @@ public class Cryptobox
                 }
             }else{
                 if(wC==-2){//empty cipher
-                    if(ciphers[r.getTargetCipher()-1][row[colOn-1]][colOn-1].equals(w)){
+                    wC = r.getTargetCipher()-1;
+                    if(ciphers[wC][row[colOn-1]][colOn-1].equals(w)){
                         scoreGlyph(pit.getWhiteGlyph(), colOn);
-                    }else if(ciphers[r.getTargetCipher()-1][row[colOn-1]][colOn-1].equals(b)){
+                    }else if(ciphers[wC][row[colOn-1]][colOn-1].equals(b)){
                         scoreGlyph(pit.getBrownGlyph(), colOn);
                     }
                 }else{
