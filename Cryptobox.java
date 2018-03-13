@@ -12,7 +12,7 @@ public class Cryptobox
     Glyph[][] box;//0 is top, left
     private boolean  color;//true is red, false is blue
     private boolean robotInZone;
-    private boolean isFull;
+    public boolean isFull;
     private final Glyph w = new Glyph(1);
     private final Glyph b = new Glyph(0);
     private int glyphs;
@@ -102,6 +102,12 @@ public class Cryptobox
         }
     }
     
+    public void updateBox(){
+        isFull = this.checkColumns()==3&&this.checkRows()==4;
+        updateRows();
+        updateCols();
+    }
+    
     public void scoreGlyph(Glyph g, int col){
         if(col == 1){
             box[rowCount1][0] =  g;
@@ -115,8 +121,8 @@ public class Cryptobox
             box[rowCount3][2] =  g;
             rowCount3--;
         }
-        updateRows();
-        updateCols();
+        updateBox();
+        
     }
 
     public void autoFirstGlyph(Robot r){
@@ -129,8 +135,10 @@ public class Cryptobox
     }
 
     public void selfScoreGlyph(Robot r){
-        
-        
+        updateBox();
+        if(isFull){
+            return;
+        }
         if(r.getGoForCipher()){
             int wC = whichCipherWorkingOn()-1;
             if(wC>-1){ 

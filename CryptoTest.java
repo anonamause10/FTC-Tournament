@@ -12,7 +12,7 @@ public class CryptoTest
         GlyphPit g = new GlyphPit();
         Robot bot = new Robot();
         try{
-            bot = CreateTeams.createTeams().get(4).getRobot();
+            bot = CreateTeams.createTeams().get(2).getRobot();
         }catch(IOException e){
             e.printStackTrace();
         }
@@ -22,22 +22,13 @@ public class CryptoTest
         Relic r = new Relic(true, x);
         Glyph w = new Glyph(1);
         Glyph b = new Glyph(0);
-        //x.getAutoPoints(bot, 1);
+        x.getAutoPoints(bot, 1);
         System.out.println(x.isBoxEmpty());
-        x.selfScoreGlyph(bot);
-        x.selfScoreGlyph(bot);
-        x.selfScoreGlyph(bot);
-        x.selfScoreGlyph(bot);
-        x.selfScoreGlyph(bot);
-        x.selfScoreGlyph(bot);
-        x.selfScoreGlyph(bot);
-        x.selfScoreGlyph(bot);
-        x.selfScoreGlyph(bot);
-        x.selfScoreGlyph(bot);
-        x.selfScoreGlyph(bot);
-        x.selfScoreGlyph(bot);
+        while(!x.isFull){
+            x.selfScoreGlyph(bot);
+        }
         
-        
+
         /*x.scoreGlyph(b,1);
         x.scoreGlyph(w,1);
         x.scoreGlyph(w,1);
@@ -50,7 +41,7 @@ public class CryptoTest
         x.scoreGlyph(w,3);
         x.scoreGlyph(w,3);
         x.scoreGlyph(b,3);*/
-        
+
         System.out.println(x.printCiph());
         System.out.println(x.checkCipher());
         System.out.println(x.whichCiph());
@@ -59,6 +50,6 @@ public class CryptoTest
         System.out.println(x.partOfCipher());
         System.out.println(x.canScore(1));
         System.out.println(x.cipherWorkingOn());
-        
+
     }
 }
