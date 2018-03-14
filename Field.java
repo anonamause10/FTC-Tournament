@@ -29,7 +29,25 @@ public class Field
     public Robot bRBot;
     public Robot rOBot;
     public Robot bOBot;
-    
+    public Field(){
+        pit = new GlyphPit();
+        rRCrypto = new Cryptobox(true, pit);
+        bRCrypto = new Cryptobox(false, pit);
+        bOCrypto = new Cryptobox(false, pit);
+        rOCrypto = new Cryptobox(true, pit);
+        rRJewelBoard = new JewelBoard(true); 
+        bRJewelBoard = new JewelBoard(false); 
+        rOJewelBoard = new JewelBoard(true); 
+        bOJewelBoard = new JewelBoard(false);
+        rRRelic = new Relic(true, rRCrypto);
+        bRRelic = new Relic(false, bRCrypto);
+        rORelic = new Relic(true, rOCrypto);
+        bORelic = new Relic(false, bOCrypto);
+        rRBoard = new BalanceBoard(true);
+        bRBoard = new BalanceBoard(false);
+        rOBoard = new BalanceBoard(true);
+        bOBoard = new BalanceBoard(false);
+    }
     public Field(Robot rR, Robot bR, Robot rO, Robot bO){
         pit = new GlyphPit();
         rRCrypto = new Cryptobox(true, pit);
@@ -53,7 +71,37 @@ public class Field
         rOBot = rO;
         bOBot = bO;
     }
-    
+    public void setRedRelic(Robot r){
+        rRBot = r;
+    }
+    public void setRedOther(Robot r){
+        rOBot = r;
+    }
+    public void setBlueRelic(Robot r){
+        bRBot = r;
+    }
+    public void setBlueOther(Robot r){
+        bRBot = r;
+    }
+    public void reset(){
+        pit = new GlyphPit();
+        rRCrypto = new Cryptobox(true, pit);
+        bRCrypto = new Cryptobox(false, pit);
+        bOCrypto = new Cryptobox(false, pit);
+        rOCrypto = new Cryptobox(true, pit);
+        rRJewelBoard = new JewelBoard(true); 
+        bRJewelBoard = new JewelBoard(false); 
+        rOJewelBoard = new JewelBoard(true); 
+        bOJewelBoard = new JewelBoard(false);
+        rRRelic = new Relic(true, rRCrypto);
+        bRRelic = new Relic(false, bRCrypto);
+        rORelic = new Relic(true, rOCrypto);
+        bORelic = new Relic(false, bOCrypto);
+        rRBoard = new BalanceBoard(true);
+        bRBoard = new BalanceBoard(false);
+        rOBoard = new BalanceBoard(true);
+        bOBoard = new BalanceBoard(false);
+    }
     public void autoPlay(){
         
         
