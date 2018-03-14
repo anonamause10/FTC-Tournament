@@ -29,8 +29,8 @@ public class GlyphPit
     
     public Glyph getRandGlyph(){
         Glyph g;       
-        int x = (int)(Math.random()*48);
-        g = (x<24) ? whites.remove(x) : browns.remove(x-24);
+        int x = (int)(Math.random()*(whites.size()+browns.size()));
+        g = (x<whites.size()) ? whites.remove(x) : browns.remove(x-whites.size());
         return g;
     }
     
