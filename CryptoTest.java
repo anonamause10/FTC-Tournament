@@ -22,12 +22,17 @@ public class CryptoTest
         Relic r = new Relic(true, x);
         Glyph w = new Glyph(1);
         Glyph b = new Glyph(0);
-        x.getAutoPoints(bot, 1);
+        x.getAutoPoints(bot);
         System.out.println(x.isBoxEmpty());
+        int i = 0;
+        String boi = ""+x.whichCipherWorkingOn();
         while(!x.isFull){
             x.selfScoreGlyph(bot);
+            System.out.print(i);
+            i++;
+            
         }
-        
+        System.out.println();
 
         /*x.scoreGlyph(b,1);
         x.scoreGlyph(w,1);
@@ -50,6 +55,9 @@ public class CryptoTest
         System.out.println(x.partOfCipher());
         System.out.println(x.canScore(1));
         System.out.println(x.cipherWorkingOn());
+        System.out.println(g.getCryptoKey());
+        System.out.println(boi);
+        
 
     }
 }

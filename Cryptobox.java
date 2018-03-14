@@ -20,6 +20,7 @@ public class Cryptobox
     private int rowCount1;
     private int rowCount2;
     private int rowCount3;
+    private int wC;
     private int[] row = {rowCount1, rowCount2, rowCount3};
     private int autoScore = 0;
     private int teleScore = 0;
@@ -41,29 +42,28 @@ public class Cryptobox
         rowCount1 = 3;
         rowCount2 = 3;
         rowCount3 = 3;
+        wC = 0;
     }
 
-    public int getAutoPoints(Robot r, int n){//1 is left 3 is right
+    public int getAutoPoints(Robot r){//1 is left 3 is right
         int score = 0;
         if(r.getAutoCrypto()){
             score += 15;
             glyphs++;
         }
         if(r.getAutoKey()){
+            colOn = pit.getCryptoKey();
             score += 30;
-            scoreGlyph(pit.getRandGlyph(),n);
+            scoreGlyph(pit.getRandGlyph(),colOn);
+        }else{
+            scoreGlyph(pit.getRandGlyph(),colOn);
         }
         if(r.getAutoGlyphs()){
             for(int i = 0; i<r.numAutoGlyphs()-1; i++){
                 score+=15;
-                scoreGlyph(pit.getRandGlyph(),n);
+                scoreGlyph(pit.getRandGlyph(),colOn);
                 glyphs++;
-                if(!canScore(n)){
-                    n++;
-                }
-                if(n>=3){
-                    n = 1;
-                }
+                updateCols();
             }
         }
         autoScore = score;
@@ -139,8 +139,10 @@ public class Cryptobox
         if(isFull){
             return;
         }
+        if(isBoxEmpty()){
+            wC = r.getTargetCipher()-1;
+        }
         if(r.getGoForCipher()){
-            int wC = whichCipherWorkingOn()-1;
             if(wC>-1){ 
                 if(ciphers[wC][row[colOn-1]][colOn-1].equals(w)){
                     scoreGlyph(pit.getWhiteGlyph(), colOn);
@@ -149,7 +151,6 @@ public class Cryptobox
                 }
             }else{
                 if(wC==-2){//empty cipher
-                    wC = r.getTargetCipher()-1;
                     if(ciphers[wC][row[colOn-1]][colOn-1].equals(w)){
                         scoreGlyph(pit.getWhiteGlyph(), colOn);
                     }else if(ciphers[wC][row[colOn-1]][colOn-1].equals(b)){
