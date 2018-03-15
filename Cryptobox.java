@@ -21,7 +21,8 @@ public class Cryptobox
     private int rowCount2;
     private int rowCount3;
     private int wC;
-    private int[] row = {rowCount1, rowCount2, rowCount3};
+    private int[] row;
+    private int[] arow;
     private int autoScore = 0;
     private int teleScore = 0;
     private final Glyph[][] cipher1 = new Glyph[][]{{w, b, w}, {b, w, b}, {w, b, w}, {b, w, b}};
@@ -42,6 +43,8 @@ public class Cryptobox
         rowCount1 = 3;
         rowCount2 = 3;
         rowCount3 = 3;
+        row = new int[]{rowCount1, rowCount2, rowCount3};
+        arow = new int[]{0, 0, 0};
         wC = 0;
     }
 
@@ -55,17 +58,23 @@ public class Cryptobox
             colOn = pit.getCryptoKey();
             score += 30;
             scoreGlyph(pit.getRandGlyph(),colOn);
+            updateBox();
+            arow[colOn-1]++;
         }else{
             scoreGlyph(pit.getRandGlyph(),colOn);
+        }
+        for(int i = 0; i<3; i++){
+            System.out.print(row[i]);
         }
         if(r.getAutoGlyphs()){
             for(int i = 0; i<r.numAutoGlyphs()-1; i++){
                 score+=15;
                 scoreGlyph(pit.getRandGlyph(),colOn);
                 glyphs++;
-                updateCols();
+                updateBox();
             }
         }
+        updateBox();
         autoScore = score;
         return score;
     }
@@ -87,6 +96,12 @@ public class Cryptobox
         return score;
     }
 
+    public void postAutoUpdate(){                       
+        
+            wC = whichCipherWorkingOn()-1;
+        
+    }
+    
     public void updateRows(){
         row[0] = rowCount1;
         row[1] = rowCount2;
@@ -104,6 +119,7 @@ public class Cryptobox
     
     public void updateBox(){
         isFull = this.checkColumns()==3&&this.checkRows()==4;
+        properUpdate();
         updateRows();
         updateCols();
     }
@@ -150,16 +166,16 @@ public class Cryptobox
                     scoreGlyph(pit.getBrownGlyph(), colOn);
                 }
             }else{
-                if(wC==-2){//empty cipher
+                if(isBoxEmpty()){//empty cipher
                     if(ciphers[wC][row[colOn-1]][colOn-1].equals(w)){
                         scoreGlyph(pit.getWhiteGlyph(), colOn);
                     }else if(ciphers[wC][row[colOn-1]][colOn-1].equals(b)){
                         scoreGlyph(pit.getBrownGlyph(), colOn);
                     }
                 }else{
-                    if(ciphers[r.getTargetCipher()-1][row[colOn-1]][colOn-1].equals(w)){
+                    if(ciphers[wC][row[colOn-1]][colOn-1].equals(w)){
                         scoreGlyph(pit.getWhiteGlyph(), colOn);
-                    }else if(ciphers[r.getTargetCipher()-1][row[colOn-1]][colOn-1].equals(b)){
+                    }else if(ciphers[wC][row[colOn-1]][colOn-1].equals(b)){
                         scoreGlyph(pit.getBrownGlyph(), colOn);
                     }
                 }
@@ -237,6 +253,9 @@ public class Cryptobox
                 }else{
                     str += box[i][j].toStr();
                 }
+            }
+            if(i == 3){
+                str+=wC+1;
             }
             str+="\n";
         }
@@ -488,5 +507,19 @@ public class Cryptobox
             }
         }
         return c;
+    }
+    
+    public void properUpdate(){
+        int row1 =3, row2 =3, row3 =3;
+        int[] rowss = {3, 3, 3};;
+        for(int i = 0; i<3; i++){
+            for(int k = 0; k < 4; k++){
+                if(box[k][i] != null){
+                    rowss[i]--;
+                }
+            }
+        }
+        row = rowss;
+        
     }
 }
