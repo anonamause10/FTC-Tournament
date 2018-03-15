@@ -56,12 +56,16 @@ public class Cryptobox
         }
         if(r.getAutoKey()){
             colOn = pit.getCryptoKey();
-            score += 30;
+            
             scoreGlyph(pit.getRandGlyph(),colOn);
             updateBox();
             arow[colOn-1]++;
         }else{
             scoreGlyph(pit.getRandGlyph(),colOn);
+            updateBox();
+        }
+        if(row[pit.getCryptoKey()-1]<3){
+            score+=30;
         }
         for(int i = 0; i<3; i++){
             System.out.print(row[i]);
@@ -254,9 +258,7 @@ public class Cryptobox
                     str += box[i][j].toStr();
                 }
             }
-            if(i == 3){
-                str+=wC+1;
-            }
+            
             str+="\n";
         }
 
