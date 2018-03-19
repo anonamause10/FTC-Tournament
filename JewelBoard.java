@@ -12,8 +12,9 @@ public class JewelBoard implements GameElement
     private boolean side;//true is red, false is blue
     private boolean order; //true is red left, false is red right
     private int point;
-    public JewelBoard(boolean order){
-        this.order = order;    
+    public JewelBoard(){
+        boolean x = Math.random()<0.5 ? true : false;
+        this.order = x;    
     }
 
     public void knockOffLeftJewel(){
