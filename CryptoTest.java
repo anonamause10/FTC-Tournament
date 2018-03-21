@@ -11,11 +11,16 @@ public class CryptoTest
     public static void main(String[]args){
         GlyphPit g = new GlyphPit();
         Robot bot = new Robot();
+        List<Team> l= new ArrayList<Team>();
+        
         try{
-            bot = CreateTeams.createTeams().get(3).getRobot();
+            l = CreateTeams.createTeams();
         }catch(IOException e){
             e.printStackTrace();
         }
+        
+        bot = l.get(0).getRobot();
+
         Cryptobox x = new Cryptobox(true, g); 
         System.out.println(bot.getAutoCrypto());
         System.out.println(bot.getAutoKey());
@@ -36,13 +41,11 @@ public class CryptoTest
             x.selfScoreGlyph(bot);
             System.out.println(x.printCiph());
             i++;
-            
+
         }
         System.out.println();
 
-        
 
-       
         System.out.println(x.checkCipher());
         System.out.println(x.whichCiph());
         System.out.println(r.canBeScored(0));
@@ -54,6 +57,17 @@ public class CryptoTest
         System.out.println(boi);
         System.out.println(bot.numAutoGlyphs());
         System.out.println(y);
-
+        System.out.println(l.size());
+        MatchListGenerator m = new MatchListGenerator(l);
+        List<Team[]> t = m.generateMatches(5);
+        for(int z = 0; z< t.size(); z++){
+            System.out.println("Match "+z);
+            for(int k = 0; k< t.get(z).length; k++){
+                System.out.println(t.get(z)[k].toString());
+            }
+        }
+        for(int oiu = 0; oiu<l.size(); oiu++){
+            System.out.println(l.get(oiu).getMatchesPlayed()+l.get(oiu).toString());
+        }
     }
 }

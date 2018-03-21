@@ -16,6 +16,7 @@ public class Team{
     private int qP;
     private int rP;
     private int ranking;
+    private int matchesPlayed;
     public Team(){
         robot = new Robot();
         teamName =  "";
@@ -34,6 +35,7 @@ public class Team{
         qP = 0;
         rP = 0;
         ranking = 0;
+        matchesPlayed = 0;
     }
 
     public Team(Robot r, String tN, int teamN, double dL, double pL, double pitL, 
@@ -56,6 +58,7 @@ public class Team{
         qP = 0;
         rP = 0;
         ranking = 0;
+        matchesPlayed = 0;
     }
 
     public double getRelationsSkill(){
@@ -118,7 +121,15 @@ public class Team{
     public void setRP(int n){
         rP = n;
     }
-
+    
+    public int getMatchesPlayed(){
+        return matchesPlayed;
+    }
+    
+    public void incMatches(){
+        matchesPlayed++;
+    }
+    
     public Robot getRobot(){
         return robot;
     }
