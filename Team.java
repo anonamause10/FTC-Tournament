@@ -130,6 +130,10 @@ public class Team{
         matchesPlayed++;
     }
     
+    public void resetMatches(){
+        matchesPlayed = 0;
+    }
+    
     public Robot getRobot(){
         return robot;
     }

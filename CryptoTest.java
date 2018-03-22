@@ -59,7 +59,11 @@ public class CryptoTest
         System.out.println(y);
         System.out.println(l.size());
         MatchListGenerator m = new MatchListGenerator(l);
-        List<Team[]> t = m.generateMatches(5);
+        List<Team[]> t = new ArrayList<Team[]>();
+        while(!m.allTeamsDone(5)){
+            t = m.generateMatches(5);
+            
+        }
         for(int z = 0; z< t.size(); z++){
             System.out.println("Match "+z);
             for(int k = 0; k< t.get(z).length; k++){

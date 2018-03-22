@@ -15,6 +15,8 @@ public class MatchListGenerator
     }
 
     public List<Team[]> generateMatches(int numPlays){
+        for(Team t:teams)t.resetMatches();
+        matches = new ArrayList<Team[]>();
         int n = (((numPlays*teams.size())%4)==0) ? ((numPlays*teams.size())/4) : (((numPlays*teams.size())/4)+1);
         for(int i = 0; i<n; i++){
             List<Team> nDone = setE(teams);
@@ -28,10 +30,10 @@ public class MatchListGenerator
             Team[] boiz = new Team[4];
 
             for(int k = 0; k< 4; k++){
-                System.out.println("ree");
+                System.out.println(i+""+k);
                 Team t = new Team();
                 try{
-                    t = nDone.remove(0);
+                    t = nDone.remove((int)(Math.random()*nDone.size()));
                 }catch(IndexOutOfBoundsException e){
                     t = done.remove((int)(Math.random()*done.size()));
                 }
@@ -46,6 +48,16 @@ public class MatchListGenerator
         return matches;
     }
 
+    public boolean allTeamsDone(int numPlays){
+        for(Team t:teams){
+            if(t.getMatchesPlayed()<numPlays){
+                return false;
+            }
+        }
+        
+        return true;
+    }
+    
     public static List<Team> setE(List<Team> s){
         List<Team> te = new ArrayList<Team>();
         for(int i = s.size()-1; i>=0; i--){
