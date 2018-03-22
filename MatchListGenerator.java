@@ -36,20 +36,27 @@ public class MatchListGenerator
             matches.add(boiz);
 
         }
-        
+        List<Team> nDone = setE(teams);
+        List<Team> done = new ArrayList<Team>();
+        for(int o = 0; o<nDone.size(); o++){
+            if(nDone.get(o).getMatchesPlayed()>=numPlays){
+                done.add(nDone.remove(o));
+                o--;
+            }
+        }
         List<Team> temp = setE(teams);
         Team[] boiz = new Team[4];
         for(int k = 0; k< 4; k++){
             System.out.println("ree");
-            Team t = temp.remove((int)(Math.random()*temp.size()));
-
-            if(t.getMatchesPlayed()<numPlays){
-                /*if(i ==n-1&&k>((numPlays*teams.size())%4)){
-                temp.add(t);
-                break;
-                }*/
-                t = temp.remove((int)(Math.random()*temp.size()));
+            Team t = new Team();
+            try{
+                t = nDone.remove(0);
+            }catch(IndexOutOfBoundsException e){
+                
+                t = done.remove((int)(Math.random()*done.size()));
             }
+            
+            
             t.incMatches();
             boiz[k] = t;
         }
