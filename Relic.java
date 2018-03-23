@@ -30,6 +30,13 @@ public class Relic implements GameElement{
         return false;
     }
 
+    public void score(Robot r){
+        if(r.getRelic()){
+            setZone(r.getTargetRelicZone());
+            setStanding(r.getStandingRelic());
+        }
+    }
+    
     public int getPointValue(int time){
         if(time>=120||box.checkCipher()){
             if (scoreZone == 1){

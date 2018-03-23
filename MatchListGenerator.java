@@ -30,7 +30,6 @@ public class MatchListGenerator
             Team[] boiz = new Team[4];
 
             for(int k = 0; k< 4; k++){
-                System.out.println(i+""+k);
                 Team t = new Team();
                 try{
                     t = nDone.remove((int)(Math.random()*nDone.size()));

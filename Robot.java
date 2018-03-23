@@ -21,6 +21,7 @@ public class Robot
     private int relicVariance; //seconds
     private int balanceSR;
     private int time;
+    private int currScore;
     public Robot(){
         robotName = "";
         robotNum = 1111;
@@ -129,6 +130,15 @@ public class Robot
     }
     public String getBotName(){
         return robotName+" from " + robotNum;
+    }
+    public void incScore(int score){
+        currScore += score;
+    }
+    public void decScore(int score){
+        currScore -= score;
+    }
+    public void resetScore(){
+        currScore = 0;
     }
     public String toString(){
         String str = "";

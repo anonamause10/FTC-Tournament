@@ -19,7 +19,7 @@ public class CryptoTest
             e.printStackTrace();
         }
         
-        bot = l.get(0).getRobot();
+        bot = l.get(4).getRobot();
 
         Cryptobox x = new Cryptobox(true, g); 
         System.out.println(bot.getAutoCrypto());
