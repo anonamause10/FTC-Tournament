@@ -104,6 +104,10 @@ public class Cryptobox
         return score;
     }
 
+    public boolean isFull(){
+        return isFull;
+    }
+    
     public void postAutoUpdate(){                       
 
         wC = whichCipherWorkingOn()-1;

@@ -151,11 +151,11 @@ public class Field
         bRBot.incScore(rRCrypto.getAutoPoints(bRBot));
         bOBot.incScore(rRCrypto.getAutoPoints(bOBot));
     }
-    
+
     public void telePlay(){
         for(int i = 0; i < 120; i++){
-            if(i%rRBot.getAvgTimePerGlyph()==0){
-                rRCrypto.selfScoreGlyph(rRBot);
+            if(i%rRBot.getAvgTimePerGlyph()==0){               
+                rRCrypto.selfScoreGlyph(rRBot);               
             }
             if(i%bRBot.getAvgTimePerGlyph()==0){
                 bRCrypto.selfScoreGlyph(bRBot);
@@ -166,8 +166,7 @@ public class Field
             if(i%bOBot.getAvgTimePerGlyph()==0){
                 bOCrypto.selfScoreGlyph(bOBot);
             }
-            
-            
+
         }
     }
 }
