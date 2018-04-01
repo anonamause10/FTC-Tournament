@@ -95,6 +95,9 @@ public class Robot
     public int getAvgTimePerGlyph(){
         return avgTimePerGlyph;
     }
+    public int getTimeTillNextGlyph(){
+        return (Math.random()<0.5)?(int)(avgTimePerGlyph+(Math.random()*glyphVariance)):(int)(avgTimePerGlyph-(Math.random()*glyphVariance));
+    }
     public boolean getGlyphRate(){
         return (glyphSR >= ((Math.random() * 100) + 1));
     }

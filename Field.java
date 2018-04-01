@@ -153,20 +153,17 @@ public class Field
     }
 
     public void telePlay(){
+        boolean rRRelReady = false;
+        boolean rORelReady = false;
+        boolean bRRelReady = false;
+        boolean bORelReady = false;
+        int rRTargetTime = 0;
+        int rOTargetTime = 0;
+        int bRTargetTime = 0;
+        int bOTargetTime = 0;
         for(int i = 0; i < 120; i++){
-            if(i%rRBot.getAvgTimePerGlyph()==0){               
-                rRCrypto.selfScoreGlyph(rRBot);               
-            }
-            if(i%bRBot.getAvgTimePerGlyph()==0){
-                bRCrypto.selfScoreGlyph(bRBot);
-            }
-            if(i%rOBot.getAvgTimePerGlyph()==0){
-                rOCrypto.selfScoreGlyph(rOBot);
-            }
-            if(i%bOBot.getAvgTimePerGlyph()==0){
-                bOCrypto.selfScoreGlyph(bOBot);
-            }
-
+            
+            
         }
     }
 }

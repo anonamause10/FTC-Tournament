@@ -162,10 +162,10 @@ public class Cryptobox
         }
     }
 
-    public void selfScoreGlyph(Robot r){
+    public boolean selfScoreGlyph(Robot r){
         updateBox();
         if(isFull){
-            return;
+            return false;
         }
         if(isBoxEmpty()){
             wC = r.getTargetCipher()-1;
@@ -199,6 +199,7 @@ public class Cryptobox
         }else{
             scoreGlyph(pit.getRandGlyph(),colOn);
         }
+        return true;
     } 
 
     public int checkRows(){

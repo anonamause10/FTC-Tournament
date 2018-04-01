@@ -34,14 +34,9 @@ public class CryptoTest
         String boi = ""+x.whichCipherWorkingOn();
         System.out.println(x.printCiph());
         System.out.println("Drivers pick up ur controllers");
-        while(!x.isFull){
-            if(i ==1){
-                x.postAutoUpdate();
-            }
-            x.selfScoreGlyph(bot);
+        while(x.selfScoreGlyph(bot)){
             System.out.println(x.printCiph());
             i++;
-
         }
         System.out.println();
 
