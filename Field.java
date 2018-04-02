@@ -162,8 +162,20 @@ public class Field
         int bRTargetTime = 0;
         int bOTargetTime = 0;
         for(int i = 0; i < 120; i++){
-            
-            
+            if(i == rRTargetTime){
+                if(!rRCrypto.selfScoreGlyph(rRBot)){
+                    
+                }
+            }
+            if(i == rOTargetTime){
+                
+            }
+            if(i == bRTargetTime){
+                
+            }
+            if(i == bOTargetTime){
+                
+            }
         }
     }
 }
