@@ -143,6 +143,9 @@ public class Robot
     public void resetScore(){
         currScore = 0;
     }
+    public int getScore(){
+        return currScore;
+    }
     public String toString(){
         String str = "";
         

@@ -8,31 +8,33 @@
 public class Field
 {
     // instance variables - replace the example below with your own
-    public GlyphPit pit;
-    public Cryptobox rRCrypto;
-    public Cryptobox bRCrypto;
-    public Cryptobox rOCrypto;
-    public Cryptobox bOCrypto;
-    public JewelBoard rRJewelBoard;
-    public JewelBoard bRJewelBoard;
-    public JewelBoard rOJewelBoard;
-    public JewelBoard bOJewelBoard;
-    public Relic rRRelic;
-    public Relic bRRelic;
-    public Relic rORelic;
-    public Relic bORelic;
-    public BalanceBoard rRBoard;
-    public BalanceBoard bRBoard;
-    public BalanceBoard rOBoard;
-    public BalanceBoard bOBoard;
-    public Robot rRBot;
-    public Robot bRBot;
-    public Robot rOBot;
-    public Robot bOBot;
-    public Team rRTeam;
-    public Team bRTeam;
-    public Team rOTeam;
-    public Team bOTeam;
+    private GlyphPit pit;
+    private Cryptobox rRCrypto;
+    private Cryptobox bRCrypto;
+    private Cryptobox rOCrypto;
+    private Cryptobox bOCrypto;
+    private JewelBoard rRJewelBoard;
+    private JewelBoard bRJewelBoard;
+    private JewelBoard rOJewelBoard;
+    private JewelBoard bOJewelBoard;
+    private Relic rRRelic;
+    private Relic bRRelic;
+    private Relic rORelic;
+    private Relic bORelic;
+    private BalanceBoard rRBoard;
+    private BalanceBoard bRBoard;
+    private BalanceBoard rOBoard;
+    private BalanceBoard bOBoard;
+    private Robot rRBot;
+    private Robot bRBot;
+    private Robot rOBot;
+    private Robot bOBot;
+    private Team rRTeam;
+    private Team bRTeam;
+    private Team rOTeam;
+    private Team bOTeam;
+    private int redScore;
+    private int blueScore;
     public Field(){
         pit = new GlyphPit();
         rRCrypto = new Cryptobox(true, pit);
@@ -51,6 +53,8 @@ public class Field
         bRBoard = new BalanceBoard(false);
         rOBoard = new BalanceBoard(true);
         bOBoard = new BalanceBoard(false);
+        redScore = 0;
+        blueScore = 0;
     }
 
     public Field(Team rR, Team bR, Team rO, Team bO){
@@ -79,6 +83,8 @@ public class Field
         bRTeam = bR;
         rOTeam = rO;
         bOTeam = bO;
+        redScore = 0;
+        blueScore = 0;
     }
 
     public void setRedRelic(Team t){
@@ -119,6 +125,8 @@ public class Field
         bRBoard = new BalanceBoard(false);
         rOBoard = new BalanceBoard(true);
         bOBoard = new BalanceBoard(false);
+        redScore = 0;
+        blueScore = 0;
     }
 
     public void autoPlay(){
@@ -150,6 +158,11 @@ public class Field
         rOBot.incScore(rRCrypto.getAutoPoints(rOBot));
         bRBot.incScore(rRCrypto.getAutoPoints(bRBot));
         bOBot.incScore(rRCrypto.getAutoPoints(bOBot));
+        redScore+=rRBot.getScore() + rOBot.getScore();
+        rRBot.resetScore(); rOBot.resetScore();
+        blueScore+=bRBot.getScore() + bOBot.getScore();
+        bRBot.resetScore(); bOBot.resetScore();
+        
     }
 
     public void telePlay(){
