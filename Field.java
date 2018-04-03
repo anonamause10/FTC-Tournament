@@ -162,7 +162,7 @@ public class Field
         rRBot.resetScore(); rOBot.resetScore();
         blueScore+=bRBot.getScore() + bOBot.getScore();
         bRBot.resetScore(); bOBot.resetScore();
-        
+
     }
 
     public void telePlay(){
@@ -174,21 +174,92 @@ public class Field
         int rOTargetTime = 0;
         int bRTargetTime = 0;
         int bOTargetTime = 0;
+
         for(int i = 0; i < 120; i++){
             if(i == rRTargetTime){
                 if(!rRCrypto.selfScoreGlyph(rRBot)){
-                    
+
+                    if(rRRelReady){
+                        if(!rRRelic.score(rRBot)){
+                            rRTargetTime += rRBot.getAvgTimePerRelic()/2;
+
+                        }else{
+                            rRRelReady=false;
+                        }
+                    }
+
+                    if(rRRelic.canBeScored(i)){
+                        rRTargetTime+=rRBot.getAvgTimePerRelic();
+                        rRRelReady = true;
+                    }
+                }else{
+                    rRTargetTime+=rRBot.getTimeTillNextGlyph();
                 }
             }
             if(i == rOTargetTime){
-                
+                if(!rOCrypto.selfScoreGlyph(rOBot)){
+
+                    if(rORelReady){
+                        if(!rORelic.score(rOBot)){
+                            rOTargetTime += rOBot.getAvgTimePerRelic()/2;
+
+                        }else{
+                            rORelReady=false;
+                        }
+                    }
+
+                    if(rORelic.canBeScored(i)){
+                        rOTargetTime+=rOBot.getAvgTimePerRelic();
+                        rORelReady = true;
+                    }
+                }else{
+                    rOTargetTime+=rOBot.getTimeTillNextGlyph();
+                }
             }
             if(i == bRTargetTime){
-                
+                if(!bRCrypto.selfScoreGlyph(bRBot)){
+
+                    if(bRRelReady){
+                        if(!bRRelic.score(bRBot)){
+                            bRTargetTime += bRBot.getAvgTimePerRelic()/2;
+
+                        }else{
+                            bRRelReady=false;
+                        }
+                    }
+
+                    if(bRRelic.canBeScored(i)){
+                        bRTargetTime+=bRBot.getAvgTimePerRelic();
+                        bRRelReady = true;
+                    }
+                }else{
+                    bRTargetTime+=bRBot.getTimeTillNextGlyph();
+                }
             }
             if(i == bOTargetTime){
-                
+                if(!bOCrypto.selfScoreGlyph(rOBot)){
+
+                    if(bORelReady){
+                        if(!bORelic.score(rOBot)){
+                            bOTargetTime += rOBot.getAvgTimePerRelic()/2;
+
+                        }else{
+                            bORelReady=false;
+                        }
+                    }
+
+                    if(bORelic.canBeScored(i)){
+                        bOTargetTime+=bOBot.getAvgTimePerRelic();
+                        bORelReady = true;
+                    }
+                }else{
+                    bOTargetTime+=bOBot.getTimeTillNextGlyph();
+                }
             }
         }
+        redScore+=rRCrypto.getTelePoints()+rOCrypto.getTelePoints()+
+        rRRelic.getPointValue(120)+rORelic.getPointValue(120);
+        blueScore+=bRCrypto.getTelePoints()+bOCrypto.getTelePoints()+
+        bRRelic.getPointValue(120)+bORelic.getPointValue(120);
     }
 }

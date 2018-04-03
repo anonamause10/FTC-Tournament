@@ -24,17 +24,19 @@ public class Relic implements GameElement{
     }
 
     public boolean canBeScored(int time){
-        if(time >= 120||box.checkCipher()){
+        if(time >= 120||box.checkCipher()&&scoreZone==0){
             return true;
         }
         return false;
     }
 
-    public void score(Robot r){
-        if(r.getRelic()){
+    public boolean score(Robot r){
+        if(r.getRelic()&&scoreZone==0){
             setZone(r.getTargetRelicZone());
             setStanding(r.getStandingRelic());
+            return true;
         }
+        return false;
     }
     
     public int getPointValue(int time){
