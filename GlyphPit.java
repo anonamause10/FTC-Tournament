@@ -35,11 +35,19 @@ public class GlyphPit
     }
     
     public Glyph getWhiteGlyph(){
-        return whites.remove(0);
+        try{
+            return whites.remove(0);
+        }catch(IndexOutOfBoundsException e){}
+
+        return null;
     }
     
     public Glyph getBrownGlyph(){
-        return browns.remove(0);
+        try{
+            return browns.remove(0);
+        }catch(IndexOutOfBoundsException e){}
+
+        return null;
     }
      
     public int getCryptoKey(){

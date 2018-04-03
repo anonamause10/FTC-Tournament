@@ -262,4 +262,12 @@ public class Field
         blueScore+=bRCrypto.getTelePoints()+bOCrypto.getTelePoints()+
         bRRelic.getPointValue(120)+bORelic.getPointValue(120);
     }
+    
+    public int getRedScore(){
+        return redScore;
+    }
+    
+    public int getBlueScore(){
+        return blueScore;
+    }
 }

@@ -71,9 +71,7 @@ public class Cryptobox
         if(row[pit.getCryptoKey()-1]<3){
             score+=30;
         }
-        for(int i = 0; i<3; i++){
-            System.out.print(row[i]);
-        }
+
         if(r.getAutoGlyphs()){
             for(int i = 0; i<r.numAutoGlyphs()-1; i++){
                 score+=15;
@@ -107,7 +105,7 @@ public class Cryptobox
     public boolean isFull(){
         return isFull;
     }
-    
+
     public void postAutoUpdate(){                       
 
         wC = whichCipherWorkingOn()-1;
@@ -171,30 +169,34 @@ public class Cryptobox
             wC = r.getTargetCipher()-1;
         }
         if(r.getGoForCipher()){
-            if(wC>-1){ 
-                if(ciphers[wC][row[colOn-1]][colOn-1].equals(w)){
-                    scoreGlyph(pit.getWhiteGlyph(), colOn);
-                }else if(ciphers[wC][row[colOn-1]][colOn-1].equals(b)){
-                    scoreGlyph(pit.getBrownGlyph(), colOn);
-                }
-            }else{
-                if(isBoxEmpty()){//empty cipher
+            try{
+                if(wC>-1){ 
                     if(ciphers[wC][row[colOn-1]][colOn-1].equals(w)){
                         scoreGlyph(pit.getWhiteGlyph(), colOn);
                     }else if(ciphers[wC][row[colOn-1]][colOn-1].equals(b)){
                         scoreGlyph(pit.getBrownGlyph(), colOn);
                     }
                 }else{
-                    try{
+                    if(isBoxEmpty()){//empty cipher
                         if(ciphers[wC][row[colOn-1]][colOn-1].equals(w)){
                             scoreGlyph(pit.getWhiteGlyph(), colOn);
                         }else if(ciphers[wC][row[colOn-1]][colOn-1].equals(b)){
                             scoreGlyph(pit.getBrownGlyph(), colOn);
                         }
-                    }catch(ArrayIndexOutOfBoundsException e){
-                        scoreGlyph(pit.getRandGlyph(),colOn);
+                    }else{
+                        try{
+                            if(ciphers[wC][row[colOn-1]][colOn-1].equals(w)){
+                                scoreGlyph(pit.getWhiteGlyph(), colOn);
+                            }else if(ciphers[wC][row[colOn-1]][colOn-1].equals(b)){
+                                scoreGlyph(pit.getBrownGlyph(), colOn);
+                            }
+                        }catch(ArrayIndexOutOfBoundsException e){
+                            scoreGlyph(pit.getRandGlyph(),colOn);
+                        }
                     }
                 }
+            }catch(ArrayIndexOutOfBoundsException e){
+                System.out.println("The robot fell over");
             }
         }else{
             scoreGlyph(pit.getRandGlyph(),colOn);
@@ -230,7 +232,6 @@ public class Cryptobox
 
         return true;
     }
-    
 
     public boolean checkCipher(){
         isFull = this.checkColumns()==3&&this.checkRows()==4;
