@@ -39,7 +39,7 @@ public class GlyphPit
             return whites.remove(0);
         }catch(IndexOutOfBoundsException e){}
 
-        return null;
+        return getRandGlyph();
     }
     
     public Glyph getBrownGlyph(){
@@ -47,7 +47,7 @@ public class GlyphPit
             return browns.remove(0);
         }catch(IndexOutOfBoundsException e){}
 
-        return null;
+        return getRandGlyph();
     }
      
     public int getCryptoKey(){

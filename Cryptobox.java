@@ -169,35 +169,33 @@ public class Cryptobox
             wC = r.getTargetCipher()-1;
         }
         if(r.getGoForCipher()){
-            try{
-                if(wC>-1){ 
+
+            if(wC>-1){ 
+                if(ciphers[wC][row[colOn-1]][colOn-1].equals(w)){
+                    scoreGlyph(pit.getWhiteGlyph(), colOn);
+                }else if(ciphers[wC][row[colOn-1]][colOn-1].equals(b)){
+                    scoreGlyph(pit.getBrownGlyph(), colOn);
+                }
+            }else{
+                if(isBoxEmpty()){//empty cipher
                     if(ciphers[wC][row[colOn-1]][colOn-1].equals(w)){
                         scoreGlyph(pit.getWhiteGlyph(), colOn);
                     }else if(ciphers[wC][row[colOn-1]][colOn-1].equals(b)){
                         scoreGlyph(pit.getBrownGlyph(), colOn);
                     }
                 }else{
-                    if(isBoxEmpty()){//empty cipher
+                    try{
                         if(ciphers[wC][row[colOn-1]][colOn-1].equals(w)){
                             scoreGlyph(pit.getWhiteGlyph(), colOn);
                         }else if(ciphers[wC][row[colOn-1]][colOn-1].equals(b)){
                             scoreGlyph(pit.getBrownGlyph(), colOn);
                         }
-                    }else{
-                        try{
-                            if(ciphers[wC][row[colOn-1]][colOn-1].equals(w)){
-                                scoreGlyph(pit.getWhiteGlyph(), colOn);
-                            }else if(ciphers[wC][row[colOn-1]][colOn-1].equals(b)){
-                                scoreGlyph(pit.getBrownGlyph(), colOn);
-                            }
-                        }catch(ArrayIndexOutOfBoundsException e){
-                            scoreGlyph(pit.getRandGlyph(),colOn);
-                        }
+                    }catch(ArrayIndexOutOfBoundsException e){
+                        scoreGlyph(pit.getRandGlyph(),colOn);
                     }
                 }
-            }catch(ArrayIndexOutOfBoundsException e){
-                System.out.println("The robot fell over");
             }
+
         }else{
             scoreGlyph(pit.getRandGlyph(),colOn);
         }
@@ -537,5 +535,9 @@ public class Cryptobox
         }
         row = rowss;
 
+    }
+
+    public Glyph getGlyph(int r, int c){
+        return box[r][c];
     }
 }

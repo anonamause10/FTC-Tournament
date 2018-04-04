@@ -35,6 +35,8 @@ public class Field
     private Team bOTeam;
     private int redScore;
     private int blueScore;
+    private String autoStatus;
+    private String teleStatus;
     public Field(){
         pit = new GlyphPit();
         rRCrypto = new Cryptobox(true, pit);
@@ -55,6 +57,8 @@ public class Field
         bOBoard = new BalanceBoard(false);
         redScore = 0;
         blueScore = 0;
+        autoStatus = "";
+        teleStatus = "";
     }
 
     public Field(Team rR, Team bR, Team rO, Team bO){
@@ -85,6 +89,8 @@ public class Field
         bOTeam = bO;
         redScore = 0;
         blueScore = 0;
+        autoStatus = "";
+        teleStatus = "";
     }
 
     public void setRedRelic(Team t){
@@ -127,6 +133,8 @@ public class Field
         bOBoard = new BalanceBoard(false);
         redScore = 0;
         blueScore = 0;
+        autoStatus = "";
+        teleStatus = "";
     }
 
     public void autoPlay(){
@@ -155,9 +163,9 @@ public class Field
             bOBot.incScore(rRJewelBoard.getPointValue(5));
         }
         rRBot.incScore(rRCrypto.getAutoPoints(rRBot));
-        rOBot.incScore(rRCrypto.getAutoPoints(rOBot));
-        bRBot.incScore(rRCrypto.getAutoPoints(bRBot));
-        bOBot.incScore(rRCrypto.getAutoPoints(bOBot));
+        rOBot.incScore(rOCrypto.getAutoPoints(rOBot));
+        bRBot.incScore(bRCrypto.getAutoPoints(bRBot));
+        bOBot.incScore(bOCrypto.getAutoPoints(bOBot));
         redScore+=rRBot.getScore() + rOBot.getScore();
         rRBot.resetScore(); rOBot.resetScore();
         blueScore+=bRBot.getScore() + bOBot.getScore();
@@ -262,12 +270,65 @@ public class Field
         blueScore+=bRCrypto.getTelePoints()+bOCrypto.getTelePoints()+
         bRRelic.getPointValue(120)+bORelic.getPointValue(120);
     }
-    
+
     public int getRedScore(){
         return redScore;
     }
-    
+
     public int getBlueScore(){
         return blueScore;
+    }
+
+    public String toString(){
+        String str = "";
+        str+="Red Score: "+redScore+"\n";
+        str+="Blue Score: "+blueScore+"\n";
+        str+="After auto:\n";
+        str+=autoStatus;
+        str+="After teleop:\n";
+        str+=teleStatus;
+        return str;
+    }
+    
+    public void setAutoStatus(){
+        autoStatus+="Red jewelboard 1\n" +rRJewelBoard.toString()+"\n";
+        autoStatus+="Red jewelboard 2\n" +rOJewelBoard.toString()+"\n";
+        autoStatus+="Blue jewelboard 1\n" +bRJewelBoard.toString()+"\n";
+        autoStatus+="Blue jewelboard 1\n" +bOJewelBoard.toString()+"\n";
+        Cryptobox[] c = new Cryptobox[]{rRCrypto, rOCrypto, bRCrypto, bOCrypto};
+        autoStatus += getCryptos(c);
+        autoStatus+="Red Score: "+redScore+"\n";
+        autoStatus+="Blue Score: "+blueScore+"\n";
+        
+        
+    }
+    
+    public void setTeleStatus(){
+        Cryptobox[] c = new Cryptobox[]{rRCrypto, rOCrypto, bRCrypto, bOCrypto};
+        teleStatus += getCryptos(c);
+        teleStatus +="Red relic 1\n" +rRRelic.toString()+"\n";
+        teleStatus +="Red relic 2\n" +rORelic.toString()+"\n";
+        teleStatus +="Blue relic 1\n" +bRRelic.toString()+"\n";
+        teleStatus +="Blue relic 2\n" +bORelic.toString()+"\n";
+        
+    }
+
+    public static String getCryptos(Cryptobox[] boxes){
+        String str = "";
+        for(int r = 0; r<4; r++){
+            for(int i = 0; i<boxes.length; i++){
+                for(int c = 0; c<3; c++){
+                    if(boxes[i].getGlyph(r,c)!=null){
+                        str+= boxes[i].getGlyph(r,c).toStr();
+                    }else{
+                        str+= "-1";
+                    }
+                }
+                str+="\t";
+            }
+            str+="\n";
+        }
+
+        return str;
     }
 }

@@ -145,6 +145,10 @@ public class Team{
 
         return str;
     }
+    
+    public int getTeamNumber(){
+        return teamNumber;
+    }
 }
 
 

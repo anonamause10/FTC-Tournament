@@ -97,10 +97,10 @@ public class JewelBoard implements GameElement
         }else{
             color = "blue";
         }
-        str += "This board is on the " + color +" side\n";
+        str += "This board is on the " + color +" side, ";
 
         if(order){
-            str += "The red jewel is on the left\n";
+            str += "The red jewel is on the left, ";
         }else{
             str += "The blue jewel is on the left\n";
         }

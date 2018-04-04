@@ -35,7 +35,7 @@ public class Jewel implements GameElement
         if(!knockedOff){
             str+=" not ";
         }
-        str+= "knocked off\n";
+        str+= "knocked off";
         return str;
     }
 }
